@@ -8,6 +8,7 @@ import java.net.URL;
 import com.github.fge.jsonschema.core.exceptions.ProcessingException;
 
 import org.json.simple.parser.ParseException;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import org.jsonschema2pojo.DefaultGenerationConfig;  
@@ -37,24 +38,25 @@ public class WebApiSimulatorApplication {
 		// Validating the JSON object
 		File schemaFile = new File("src/main/resources/schema.json");
 		File jsonFile = new File("src/main/resources/config.json");
-			
+		
 		if (ValidationUtils.isJsonValid(schemaFile, jsonFile)){
-			System.out.println("Valid!");
-			String packageName="com.simulator.pojo";  
-			File inputJson= new File("src/main/resources/config.json");  
-			File outputPojoDirectory=new File("src/main/java");  
+			System.out.println("Valid Configuration!");
+			
+			String packageName = "com.simulator.pojo";  
+			File inputJson = new File("src/main/resources/config.json");  
+			File outputPojoDirectory = new File("src/main/java");  
 			outputPojoDirectory.mkdirs();  
 			try {  
 				new WebApiSimulatorApplication().convert2JSON(inputJson.toURI().toURL(), outputPojoDirectory, packageName, inputJson.getName().replace(".json", ""));  
 			} catch (IOException e) {  
 				// TODO Auto-generated catch block  
-				System.out.println("Encountered issue while converting to pojo: "+e.getMessage());  
+				System.out.println("Encountered issue while converting to pojo: " + e.getMessage());  
 				e.printStackTrace();  
-			}  
-		}else{
-			System.out.println("NOT valid!");
+			} 
+			SpringApplication.run(WebApiSimulatorApplication.class, args);
+		} else {
+			System.out.println("Input configuration file is not valid!");
 		}
-		// 	SpringApplication.run(EmpApplication.class, args);
 	}
 	
 	public void convert2JSON(URL inputJson, File outputPojoDirectory, String packageName, String className) throws IOException{  
