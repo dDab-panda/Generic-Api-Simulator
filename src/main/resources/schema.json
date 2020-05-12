@@ -1,0 +1,371 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://example.com/example.json",
+    "type": "object",
+    "title": "The root schema",
+    "description": "The root schema comprises the entire JSON document.",
+    "default": {},
+    "examples": [
+        {
+            "applications": {
+                "endpoints": [
+                    {
+                        "Response": {
+                            "body": [
+                                "things1",
+                                "things2"
+                            ],
+                            "status": 200.0,
+                            "headers": {
+                                "Content-Type": "application/json"
+                            }
+                        },
+                        "Request": {
+                            "url": "/search?q=things",
+                            "headers": {
+                                "Accept": "application/json"
+                            },
+                            "method": "GET"
+                        },
+                        "customHandler": "com.mastercard.handler.custom.RestJSONHandler"
+                    }
+                ],
+                "context": "/usermangement",
+                "type": "REST",
+                "payload": "JSON"
+            }
+        }
+    ],
+    "required": [
+        "applications"
+    ],
+    "additionalProperties": true,
+    "properties": {
+        "applications": {
+            "$id": "#/properties/applications",
+            "type": "object",
+            "title": "The applications schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": {},
+            "examples": [
+                {
+                    "endpoints": [
+                        {
+                            "customHandler": "com.mastercard.handler.custom.RestJSONHandler",
+                            "Response": {
+                                "body": [
+                                    "things1",
+                                    "things2"
+                                ],
+                                "status": 200.0,
+                                "headers": {
+                                    "Content-Type": "application/json"
+                                }
+                            },
+                            "Request": {
+                                "url": "/search?q=things",
+                                "headers": {
+                                    "Accept": "application/json"
+                                },
+                                "method": "GET"
+                            }
+                        }
+                    ],
+                    "context": "/usermangement",
+                    "type": "REST",
+                    "payload": "JSON"
+                }
+            ],
+            "required": [
+                "context",
+                "type",
+                "payload",
+                "endpoints"
+            ],
+            "additionalProperties": true,
+            "properties": {
+                "context": {
+                    "$id": "#/properties/applications/properties/context",
+                    "type": "string",
+                    "title": "The context schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "/usermangement"
+                    ]
+                },
+                "type": {
+                    "$id": "#/properties/applications/properties/type",
+                    "type": "string",
+                    "title": "The type schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "REST"
+                    ]
+                },
+                "payload": {
+                    "$id": "#/properties/applications/properties/payload",
+                    "type": "string",
+                    "title": "The payload schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "JSON"
+                    ]
+                },
+                "endpoints": {
+                    "$id": "#/properties/applications/properties/endpoints",
+                    "type": "array",
+                    "title": "The endpoints schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": [],
+                    "examples": [
+                        [
+                            {
+                                "Request": {
+                                    "headers": {
+                                        "Accept": "application/json"
+                                    },
+                                    "method": "GET",
+                                    "url": "/search?q=things"
+                                },
+                                "customHandler": "com.mastercard.handler.custom.RestJSONHandler",
+                                "Response": {
+                                    "body": [
+                                        "things1",
+                                        "things2"
+                                    ],
+                                    "status": 200.0,
+                                    "headers": {
+                                        "Content-Type": "application/json"
+                                    }
+                                }
+                            }
+                        ]
+                    ],
+                    "additionalItems": true,
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$id": "#/properties/applications/properties/endpoints/items/anyOf/0",
+                                "type": "object",
+                                "title": "The first anyOf schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": {},
+                                "examples": [
+                                    {
+                                        "Response": {
+                                            "body": [
+                                                "things1",
+                                                "things2"
+                                            ],
+                                            "status": 200.0,
+                                            "headers": {
+                                                "Content-Type": "application/json"
+                                            }
+                                        },
+                                        "Request": {
+                                            "headers": {
+                                                "Accept": "application/json"
+                                            },
+                                            "method": "GET",
+                                            "url": "/search?q=things"
+                                        },
+                                        "customHandler": "com.mastercard.handler.custom.RestJSONHandler"
+                                    }
+                                ],
+                                "required": [
+                                    "Request",
+                                    "Response",
+                                    "customHandler"
+                                ],
+                                "additionalProperties": true,
+                                "properties": {
+                                    "Request": {
+                                        "$id": "#/properties/applications/properties/endpoints/items/anyOf/0/properties/Request",
+                                        "type": "object",
+                                        "title": "The Request schema",
+                                        "description": "An explanation about the purpose of this instance.",
+                                        "default": {},
+                                        "examples": [
+                                            {
+                                                "url": "/search?q=things",
+                                                "headers": {
+                                                    "Accept": "application/json"
+                                                },
+                                                "method": "GET"
+                                            }
+                                        ],
+                                        "required": [
+                                            "method",
+                                            "url",
+                                            "headers"
+                                        ],
+                                        "additionalProperties": true,
+                                        "properties": {
+                                            "method": {
+                                                "$id": "#/properties/applications/properties/endpoints/items/anyOf/0/properties/Request/properties/method",
+                                                "type": "string",
+                                                "title": "The method schema",
+                                                "description": "An explanation about the purpose of this instance.",
+                                                "default": "",
+                                                "examples": [
+                                                    "GET"
+                                                ]
+                                            },
+                                            "url": {
+                                                "$id": "#/properties/applications/properties/endpoints/items/anyOf/0/properties/Request/properties/url",
+                                                "type": "string",
+                                                "title": "The url schema",
+                                                "description": "An explanation about the purpose of this instance.",
+                                                "default": "",
+                                                "examples": [
+                                                    "/search?q=things"
+                                                ]
+                                            },
+                                            "headers": {
+                                                "$id": "#/properties/applications/properties/endpoints/items/anyOf/0/properties/Request/properties/headers",
+                                                "type": "object",
+                                                "title": "The headers schema",
+                                                "description": "An explanation about the purpose of this instance.",
+                                                "default": {},
+                                                "examples": [
+                                                    {
+                                                        "Accept": "application/json"
+                                                    }
+                                                ],
+                                                "required": [
+                                                    "Accept"
+                                                ],
+                                                "additionalProperties": true,
+                                                "properties": {
+                                                    "Accept": {
+                                                        "$id": "#/properties/applications/properties/endpoints/items/anyOf/0/properties/Request/properties/headers/properties/Accept",
+                                                        "type": "string",
+                                                        "title": "The Accept schema",
+                                                        "description": "An explanation about the purpose of this instance.",
+                                                        "default": "",
+                                                        "examples": [
+                                                            "application/json"
+                                                        ]
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "Response": {
+                                        "$id": "#/properties/applications/properties/endpoints/items/anyOf/0/properties/Response",
+                                        "type": "object",
+                                        "title": "The Response schema",
+                                        "description": "An explanation about the purpose of this instance.",
+                                        "default": {},
+                                        "examples": [
+                                            {
+                                                "body": [
+                                                    "things1",
+                                                    "things2"
+                                                ],
+                                                "status": 200.0,
+                                                "headers": {
+                                                    "Content-Type": "application/json"
+                                                }
+                                            }
+                                        ],
+                                        "required": [
+                                            "status",
+                                            "body",
+                                            "headers"
+                                        ],
+                                        "additionalProperties": true,
+                                        "properties": {
+                                            "status": {
+                                                "$id": "#/properties/applications/properties/endpoints/items/anyOf/0/properties/Response/properties/status",
+                                                "type": "integer",
+                                                "title": "The status schema",
+                                                "description": "An explanation about the purpose of this instance.",
+                                                "default": 0.0,
+                                                "examples": [
+                                                    200.0
+                                                ]
+                                            },
+                                            "body": {
+                                                "$id": "#/properties/applications/properties/endpoints/items/anyOf/0/properties/Response/properties/body",
+                                                "type": "array",
+                                                "title": "The body schema",
+                                                "description": "An explanation about the purpose of this instance.",
+                                                "default": [],
+                                                "examples": [
+                                                    [
+                                                        "things1",
+                                                        "things2"
+                                                    ]
+                                                ],
+                                                "additionalItems": true,
+                                                "items": {
+                                                    "anyOf": [
+                                                        {
+                                                            "$id": "#/properties/applications/properties/endpoints/items/anyOf/0/properties/Response/properties/body/items/anyOf/0",
+                                                            "type": "string",
+                                                            "title": "The first anyOf schema",
+                                                            "description": "An explanation about the purpose of this instance.",
+                                                            "default": "",
+                                                            "examples": [
+                                                                "things1",
+                                                                "things2"
+                                                            ]
+                                                        }
+                                                    ],
+                                                    "$id": "#/properties/applications/properties/endpoints/items/anyOf/0/properties/Response/properties/body/items"
+                                                }
+                                            },
+                                            "headers": {
+                                                "$id": "#/properties/applications/properties/endpoints/items/anyOf/0/properties/Response/properties/headers",
+                                                "type": "object",
+                                                "title": "The headers schema",
+                                                "description": "An explanation about the purpose of this instance.",
+                                                "default": {},
+                                                "examples": [
+                                                    {
+                                                        "Content-Type": "application/json"
+                                                    }
+                                                ],
+                                                "required": [
+                                                    "Content-Type"
+                                                ],
+                                                "additionalProperties": true,
+                                                "properties": {
+                                                    "Content-Type": {
+                                                        "$id": "#/properties/applications/properties/endpoints/items/anyOf/0/properties/Response/properties/headers/properties/Content-Type",
+                                                        "type": "string",
+                                                        "title": "The Content-Type schema",
+                                                        "description": "An explanation about the purpose of this instance.",
+                                                        "default": "",
+                                                        "examples": [
+                                                            "application/json"
+                                                        ]
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "customHandler": {
+                                        "$id": "#/properties/applications/properties/endpoints/items/anyOf/0/properties/customHandler",
+                                        "type": "string",
+                                        "title": "The customHandler schema",
+                                        "description": "An explanation about the purpose of this instance.",
+                                        "default": "",
+                                        "examples": [
+                                            "com.mastercard.handler.custom.RestJSONHandler"
+                                        ]
+                                    }
+                                }
+                            }
+                        ],
+                        "$id": "#/properties/applications/properties/endpoints/items"
+                    }
+                }
+            }
+        }
+    }
+}

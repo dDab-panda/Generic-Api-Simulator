@@ -1,0 +1,29 @@
+{
+    "applications": {
+        "context": "/usermangement",
+        "type": "REST",
+        "payload": "JSON",
+        "endpoints": [{
+
+            "Request": {
+                "method": "GET",
+                "url": "/search?q=things",
+                "headers": {
+                    "Accept": "application/json"
+                }
+            },
+            "Response": {
+                "status": 200,
+                "body": [
+                    "things1",
+                    "things2"
+                ],
+                "headers": {
+                    "Content-Type": "application/json"
+                }
+            },
+            "customHandler": "com.mastercard.handler.custom.RestJSONHandler"
+
+        }]
+    }
+}
