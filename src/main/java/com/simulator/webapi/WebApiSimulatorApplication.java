@@ -8,6 +8,7 @@ public class WebApiSimulatorApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(WebApiSimulatorApplication.class, args);
+		
 	}
 
 }
