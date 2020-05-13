@@ -13,8 +13,10 @@ import com.simulator.library.ValidationUtils;
 public class Application {
 
 	public static void main(String[] args) throws ProcessingException, IOException {
-		
-		File jsonFile = new File("src/main/resources/config.json");
+		String configpath = System.getProperty("user.dir");
+		configpath+="/src/main/resources/config.json";
+		System.out.println(configpath);
+		File jsonFile = new File(configpath);
 		
 		if(ValidationUtils.isJsonValidNew(jsonFile)) {
 			System.out.println("Valid configuration!");

@@ -109,7 +109,12 @@ public class ValidationUtils {
     } // validateJson(Node) ends    
     
     public static boolean isJsonValidNew(File jsonFile) throws ProcessingException, IOException {
-    	File schemaFile = new File("/home/sunny/eclipse-workspace/Mastercard/GAS/library/src/main/resources/schema.json");
+    	String schemapath = System.getProperty("user.dir");
+    	schemapath = schemapath.substring(0,schemapath.length()-11);
+    	schemapath+="library/src/main/resources/schema.json";
+    	
+    	System.out.println(schemapath);
+    	File schemaFile = new File(schemapath);
     	
     	final JsonSchema schemaNode = getSchemaNode(schemaFile);
         final JsonNode jsonNode = getJsonNode(jsonFile);
