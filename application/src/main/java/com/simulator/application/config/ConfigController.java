@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,11 +20,14 @@ public class ConfigController {
 	
 	@RequestMapping("/config")
 	public Config getResp() throws ProcessingException, IOException {
-	    return ConfigLoader.getConfig();
+	    return ConfigLoader.getConfig();		
 	}
 	
-	@RequestMapping("/search")
-	public List<String> defaultResp() {
-		return confServ.defaultThings();
+	@RequestMapping("/{context}/{reqUrl}")
+	public List<String> defaultResp(@PathVariable String context, @PathVariable String reqUrl) throws ProcessingException, IOException {
+		if(context + "/" + reqUrl == ConfigLoader.getPath()) {
+			return confServ.getConfig().getApplications().getEndpoints().get(0).getResponse().getBody();
+		}
+		else return null;
 	}
 }

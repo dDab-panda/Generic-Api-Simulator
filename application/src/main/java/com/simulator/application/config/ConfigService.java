@@ -1,18 +1,16 @@
 package com.simulator.application.config;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.IOException;
 
 import org.springframework.stereotype.Service;
+
+import com.github.fge.jsonschema.core.exceptions.ProcessingException;
+import com.simulator.pojo.Config;
 
 @Service
 public class ConfigService {
 	
-	public List<String> defaultThings() {
-		List<String> defaultBody = new ArrayList<String> ();
-		defaultBody.add("thing1");
-		defaultBody.add("thing2");
-		defaultBody.add("thing3");
-		return defaultBody;
+	public Config getConfig() throws ProcessingException, IOException {
+		return ConfigLoader.getConfig();
 	}
 }

@@ -1,6 +1,6 @@
 {
     "applications": {
-        "context": "/usermangement",
+        "context": "/usermanagement",
         "type": "REST",
         "payload": "JSON",
         "endpoints": [{
