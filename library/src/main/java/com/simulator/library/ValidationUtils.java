@@ -111,7 +111,7 @@ public class ValidationUtils {
     public static boolean isJsonValidNew(File jsonFile) throws ProcessingException, IOException {
     	String schemapath = System.getProperty("user.dir");
     	schemapath = schemapath.substring(0,schemapath.length()-11);
-    	schemapath+="library/src/main/resour ces/schema.json";
+    	schemapath+="library/src/main/resources/schema.json";
     	
     	System.out.println(schemapath);
     	File schemaFile = new File(schemapath);
