@@ -11,23 +11,7 @@ import com.github.fge.jsonschema.core.exceptions.ProcessingException;
 public class Application {
 
 	public static void main(String[] args) throws ProcessingException, IOException {
-<<<<<<< HEAD
-		String configpath = System.getProperty("user.dir");
-		configpath+="/src/main/resources/config.json";
-		System.out.println(configpath);
-		File jsonFile = new File(configpath);
-		
-		if(ValidationUtils.isJsonValidNew(jsonFile)) {
-			System.out.println("Valid configuration!");
-			
-			SpringApplication.run(Application.class, args);
-		}
-		else {
-			System.out.println("Invalid configuration!");
-		}
-=======
 		
 		SpringApplication.run(Application.class, args);
->>>>>>> sam
 	}
 }
