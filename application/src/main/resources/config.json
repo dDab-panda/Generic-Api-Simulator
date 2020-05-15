@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "applications": [
     {
     "context": "/simulator",
@@ -75,3 +76,33 @@
     
   }]
 }
+=======
+    "applications": {
+        "context": "/usermanagement",
+        "type": "REST",
+        "payload": "JSON",
+        "endpoints": [{
+
+            "Request": {
+                "method": "GET",
+                "url": "/search?q=things",
+                "headers": {
+                    "Accept": "application/json"
+                }
+            },
+            "Response": {
+                "status": 200,
+                "body": [
+                    "things1",
+                    "things2"
+                ],
+                "headers": {
+                    "Content-Type": "application/json"
+                }
+            },
+            "customHandler": "com.mastercard.handler.custom.RestJSONHandler"
+
+        }]
+    }
+}
+>>>>>>> 9085f1b5b38363b311195d3dd0720ded09a7aa54

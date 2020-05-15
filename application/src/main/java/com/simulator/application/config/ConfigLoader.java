@@ -21,4 +21,15 @@ public class ConfigLoader {
 		conf = LibraryApplication.getJsonObj(jsonFile);
 		return conf;
 	}
+	
+	public static String getPath() {
+		String str1 = conf.getApplications().getContext();
+		str1 = str1.substring(1);
+		
+		String temp = conf.getApplications().getEndpoints().get(0).getRequest().getUrl();
+		int ind = temp.indexOf("?");
+		String str2 = temp.substring(0, ind);
+		
+		return str1 + str2;
+	}
 }
