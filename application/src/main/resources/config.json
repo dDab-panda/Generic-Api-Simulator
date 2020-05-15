@@ -1,29 +1,77 @@
 {
-    "applications": {
-        "context": "/usermangement",
-        "type": "REST",
-        "payload": "JSON",
-        "endpoints": [{
-
-            "Request": {
-                "method": "GET",
-                "url": "/search?q=things",
-                "headers": {
-                    "Accept": "application/json"
-                }
-            },
-            "Response": {
-                "status": 200,
-                "body": [
-                    "things1",
-                    "things2"
-                ],
-                "headers": {
-                    "Content-Type": "application/json"
-                }
-            },
-            "customHandler": "com.mastercard.handler.custom.RestJSONHandler"
-
-        }]
-    }
+  "applications": [
+    {
+    "context": "/simulator",
+    "type": "REST",
+    "endpoints": [
+      {
+        "Request": {
+          "method": "GET",
+          "url": "/test1/?id=e110",
+          "requestpayload": {},
+          "requestheaders": {
+            "Accept": "application/json"
+          }
+        },
+        "Response": {
+          "status": 200,
+          "responsepayload": {
+            "id":"e110",
+            "name":"Rathore"
+          },
+          "responseheaders": {
+            "Content-Type": "application/json"
+          }
+        },
+        "customHandler": "com.mastercard.handler.custom.RestJSONHandler"
+      },
+      {
+        "Request": {
+          "method": "POST",
+          "url": "/test2",
+          "requestpayload":{
+            "id":"e12",
+            "name":"Vedant",
+            "position":"Intern"
+          },
+          "requestheaders": {
+            "Accept": "application/json"
+          }
+        },
+        "Response": {
+          "status": 200,
+          "responsepayload": {},
+          "responseheaders": {
+            "Content-Type": "application/json"
+          }
+        },
+        "customHandler":"null"
+      }
+    ]
+  },
+  {
+    "context": "/apiformanager",
+    "type": "REST",
+    "endpoints": [
+      {
+        "Request": {
+          "method": "DELETE",
+          "url": "/test3/?id=e110",
+          "requestpayload": {},
+          "requestheaders": {
+            "Accept": "application/json"
+          }
+        },
+        "Response": {
+          "status": 200,
+          "responsepayload": {},
+          "responseheaders": {
+            "Content-Type": "application/json"
+          }
+        },
+        "customHandler": "com.mastercard.handler.custom.RestJSONHandler"
+      }
+    ]
+    
+  }]
 }

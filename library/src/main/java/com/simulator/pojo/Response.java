@@ -1,9 +1,7 @@
 
 package com.simulator.pojo;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
@@ -18,17 +16,17 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
     "status",
-    "body",
-    "headers"
+    "responsepayload",
+    "responseheaders"
 })
 public class Response {
 
     @JsonProperty("status")
     private Integer status;
-    @JsonProperty("body")
-    private List<String> body = new ArrayList<String>();
-    @JsonProperty("headers")
-    private Headers_ headers;
+    @JsonProperty("responsepayload")
+    private Responsepayload responsepayload;
+    @JsonProperty("responseheaders")
+    private Responseheaders responseheaders;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -47,33 +45,33 @@ public class Response {
         return this;
     }
 
-    @JsonProperty("body")
-    public List<String> getBody() {
-        return body;
+    @JsonProperty("responsepayload")
+    public Responsepayload getResponsepayload() {
+        return responsepayload;
     }
 
-    @JsonProperty("body")
-    public void setBody(List<String> body) {
-        this.body = body;
+    @JsonProperty("responsepayload")
+    public void setResponsepayload(Responsepayload responsepayload) {
+        this.responsepayload = responsepayload;
     }
 
-    public Response withBody(List<String> body) {
-        this.body = body;
+    public Response withResponsepayload(Responsepayload responsepayload) {
+        this.responsepayload = responsepayload;
         return this;
     }
 
-    @JsonProperty("headers")
-    public Headers_ getHeaders() {
-        return headers;
+    @JsonProperty("responseheaders")
+    public Responseheaders getResponseheaders() {
+        return responseheaders;
     }
 
-    @JsonProperty("headers")
-    public void setHeaders(Headers_ headers) {
-        this.headers = headers;
+    @JsonProperty("responseheaders")
+    public void setResponseheaders(Responseheaders responseheaders) {
+        this.responseheaders = responseheaders;
     }
 
-    public Response withHeaders(Headers_ headers) {
-        this.headers = headers;
+    public Response withResponseheaders(Responseheaders responseheaders) {
+        this.responseheaders = responseheaders;
         return this;
     }
 
@@ -99,7 +97,7 @@ public class Response {
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder().append(status).append(body).append(headers).append(additionalProperties).toHashCode();
+        return new HashCodeBuilder().append(status).append(responsepayload).append(responseheaders).append(additionalProperties).toHashCode();
     }
 
     @Override
@@ -111,7 +109,7 @@ public class Response {
             return false;
         }
         Response rhs = ((Response) other);
-        return new EqualsBuilder().append(status, rhs.status).append(body, rhs.body).append(headers, rhs.headers).append(additionalProperties, rhs.additionalProperties).isEquals();
+        return new EqualsBuilder().append(status, rhs.status).append(responsepayload, rhs.responsepayload).append(responseheaders, rhs.responseheaders).append(additionalProperties, rhs.additionalProperties).isEquals();
     }
 
 }

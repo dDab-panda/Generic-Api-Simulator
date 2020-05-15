@@ -15,27 +15,45 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "Content-Type"
+    "id",
+    "name"
 })
-public class Headers_ {
+public class Responsepayload {
 
-    @JsonProperty("Content-Type")
-    private String contentType;
+    @JsonProperty("id")
+    private String id;
+    @JsonProperty("name")
+    private String name;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("Content-Type")
-    public String getContentType() {
-        return contentType;
+    @JsonProperty("id")
+    public String getId() {
+        return id;
     }
 
-    @JsonProperty("Content-Type")
-    public void setContentType(String contentType) {
-        this.contentType = contentType;
+    @JsonProperty("id")
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public Headers_ withContentType(String contentType) {
-        this.contentType = contentType;
+    public Responsepayload withId(String id) {
+        this.id = id;
+        return this;
+    }
+
+    @JsonProperty("name")
+    public String getName() {
+        return name;
+    }
+
+    @JsonProperty("name")
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Responsepayload withName(String name) {
+        this.name = name;
         return this;
     }
 
@@ -54,14 +72,14 @@ public class Headers_ {
         this.additionalProperties.put(name, value);
     }
 
-    public Headers_ withAdditionalProperty(String name, Object value) {
+    public Responsepayload withAdditionalProperty(String name, Object value) {
         this.additionalProperties.put(name, value);
         return this;
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder().append(contentType).append(additionalProperties).toHashCode();
+        return new HashCodeBuilder().append(id).append(name).append(additionalProperties).toHashCode();
     }
 
     @Override
@@ -69,11 +87,11 @@ public class Headers_ {
         if (other == this) {
             return true;
         }
-        if ((other instanceof Headers_) == false) {
+        if ((other instanceof Responsepayload) == false) {
             return false;
         }
-        Headers_ rhs = ((Headers_) other);
-        return new EqualsBuilder().append(contentType, rhs.contentType).append(additionalProperties, rhs.additionalProperties).isEquals();
+        Responsepayload rhs = ((Responsepayload) other);
+        return new EqualsBuilder().append(id, rhs.id).append(name, rhs.name).append(additionalProperties, rhs.additionalProperties).isEquals();
     }
 
 }
