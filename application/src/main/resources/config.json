@@ -1,7 +1,7 @@
 {
   "applications": [
     {
-    "context": "/simulator",
+    "context": "/apiforemployee",
     "type": "REST",
     "endpoints": [
       {
