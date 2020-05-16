@@ -17,7 +17,8 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 @JsonPropertyOrder({
     "method",
     "url",
-    "headers"
+    "requestpayload",
+    "requestheaders"
 })
 public class Request {
 
@@ -25,8 +26,10 @@ public class Request {
     private String method;
     @JsonProperty("url")
     private String url;
-    @JsonProperty("headers")
-    private Headers headers;
+    @JsonProperty("requestpayload")
+    private Requestpayload requestpayload;
+    @JsonProperty("requestheaders")
+    private Requestheaders requestheaders;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -60,18 +63,33 @@ public class Request {
         return this;
     }
 
-    @JsonProperty("headers")
-    public Headers getHeaders() {
-        return headers;
+    @JsonProperty("requestpayload")
+    public Requestpayload getRequestpayload() {
+        return requestpayload;
     }
 
-    @JsonProperty("headers")
-    public void setHeaders(Headers headers) {
-        this.headers = headers;
+    @JsonProperty("requestpayload")
+    public void setRequestpayload(Requestpayload requestpayload) {
+        this.requestpayload = requestpayload;
     }
 
-    public Request withHeaders(Headers headers) {
-        this.headers = headers;
+    public Request withRequestpayload(Requestpayload requestpayload) {
+        this.requestpayload = requestpayload;
+        return this;
+    }
+
+    @JsonProperty("requestheaders")
+    public Requestheaders getRequestheaders() {
+        return requestheaders;
+    }
+
+    @JsonProperty("requestheaders")
+    public void setRequestheaders(Requestheaders requestheaders) {
+        this.requestheaders = requestheaders;
+    }
+
+    public Request withRequestheaders(Requestheaders requestheaders) {
+        this.requestheaders = requestheaders;
         return this;
     }
 
@@ -97,7 +115,7 @@ public class Request {
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder().append(method).append(url).append(headers).append(additionalProperties).toHashCode();
+        return new HashCodeBuilder().append(method).append(url).append(requestpayload).append(requestheaders).append(additionalProperties).toHashCode();
     }
 
     @Override
@@ -109,7 +127,7 @@ public class Request {
             return false;
         }
         Request rhs = ((Request) other);
-        return new EqualsBuilder().append(method, rhs.method).append(url, rhs.url).append(headers, rhs.headers).append(additionalProperties, rhs.additionalProperties).isEquals();
+        return new EqualsBuilder().append(method, rhs.method).append(url, rhs.url).append(requestpayload, rhs.requestpayload).append(requestheaders, rhs.requestheaders).append(additionalProperties, rhs.additionalProperties).isEquals();
     }
 
 }

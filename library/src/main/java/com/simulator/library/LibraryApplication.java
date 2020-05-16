@@ -11,7 +11,7 @@ public class LibraryApplication {
 	
 	public static Config getJsonObj(File jsonFile) throws ProcessingException, IOException {
 		// load the configuration JSON file into the an object
-		// of the (already) defiened POJO class
+		// of the (already) defined POJO class
 		Config cnf = null;
 
 		if(ValidationUtils.isJsonValidNew(jsonFile)) {
