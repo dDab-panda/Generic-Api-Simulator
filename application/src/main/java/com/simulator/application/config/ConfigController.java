@@ -8,6 +8,9 @@ import java.util.Map.Entry;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,17 +25,21 @@ import com.simulator.pojo.*;
 @Controller
 @RequestMapping("/simulator")
 public class ConfigController {
+	
+	Logger logger = LoggerFactory.getLogger(ConfigController.class);
 
 	@Autowired
 	public ConfigurationLoader configfile;
 	
 	@RequestMapping("/config")
 	public @ResponseBody Config sendConfig() throws ProcessingException, IOException {
+		logger.trace("Configuration file viewed.");
 		return configfile.getConfig();
 	}
 	
 	@RequestMapping("/configmap")
 	public @ResponseBody Map<List<String>,Response> sendConfigMap() throws ProcessingException, IOException {
+		logger.trace("Configuration map accessed.");
 		return configfile.getConfigMap();
 	}
 	
@@ -44,44 +51,39 @@ public class ConfigController {
 		 Map<String, String[]> paramap = request.getParameterMap();
 		 
 		 if(!paramap.isEmpty()) {
-			 finalUrl+='?';
-			 for(Entry<String,String[]> elem:paramap.entrySet()) {
-				 finalUrl+=(String)elem.getKey() + "=";
+			 finalUrl += '?';
+			 for(Entry<String, String[]> elem: paramap.entrySet()) {
+				 finalUrl += (String)elem.getKey() + "=";
 				 String[] paramval = (String[])elem.getValue();
-				 finalUrl+=paramval[0];
-			 }	
+				 finalUrl += paramval[0];
+			 }	 
 		 }
 		 
-		 
-		finalUrl = finalUrl.substring(10,finalUrl.length());
+		finalUrl = finalUrl.substring(10, finalUrl.length());
 		Map<List<String>,Response> configmap = configfile.getConfigMap();
-		byte[] response=null;
+		byte[] response = null;
 		
 		for (Entry<List<String>, Response> mapElement: configmap.entrySet()) { 
 			
             List<String> key = (List<String>) mapElement.getKey();
             String url = key.get(1);
-            System.out.println("Url here is  = "+url);
-            System.out.println("requstes url here is "+finalUrl);
+            System.out.println("Url here is  = " + url);
+            System.out.println("request url here is " + finalUrl);
             if(url.equals(finalUrl)) {
-            	System.out.println("Got int bruh");
+            	logger.trace("Found request url in configuration map.");
             	String resp = "Hi, you got your static running";
             	response = resp.getBytes();
             	break;
             }
         } 
-        
-	
+      
         return response;
         
-		
-        //Read the URL
+        // Read the URL
         // match the URL and header from the conf.
         // fetch right end conf for this given case.
         
         //home/aayush/Programming/Mastercard/springide-workspace/.metadata/.plugins/org.eclipse.jdt.ui/jdt-images/19.png
         //send a dubby response.
-        
     }
-	
 }
