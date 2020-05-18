@@ -19,17 +19,14 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 @JsonPropertyOrder({
     "context",
     "type",
-    "payload",
     "endpoints"
 })
-public class Applications {
+public class Application {
 
     @JsonProperty("context")
     private String context;
     @JsonProperty("type")
     private String type;
-    @JsonProperty("payload")
-    private String payload;
     @JsonProperty("endpoints")
     private List<Endpoint> endpoints = new ArrayList<Endpoint>();
     @JsonIgnore
@@ -45,7 +42,7 @@ public class Applications {
         this.context = context;
     }
 
-    public Applications withContext(String context) {
+    public Application withContext(String context) {
         this.context = context;
         return this;
     }
@@ -60,23 +57,8 @@ public class Applications {
         this.type = type;
     }
 
-    public Applications withType(String type) {
+    public Application withType(String type) {
         this.type = type;
-        return this;
-    }
-
-    @JsonProperty("payload")
-    public String getPayload() {
-        return payload;
-    }
-
-    @JsonProperty("payload")
-    public void setPayload(String payload) {
-        this.payload = payload;
-    }
-
-    public Applications withPayload(String payload) {
-        this.payload = payload;
         return this;
     }
 
@@ -90,7 +72,7 @@ public class Applications {
         this.endpoints = endpoints;
     }
 
-    public Applications withEndpoints(List<Endpoint> endpoints) {
+    public Application withEndpoints(List<Endpoint> endpoints) {
         this.endpoints = endpoints;
         return this;
     }
@@ -110,14 +92,14 @@ public class Applications {
         this.additionalProperties.put(name, value);
     }
 
-    public Applications withAdditionalProperty(String name, Object value) {
+    public Application withAdditionalProperty(String name, Object value) {
         this.additionalProperties.put(name, value);
         return this;
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder().append(context).append(type).append(payload).append(endpoints).append(additionalProperties).toHashCode();
+        return new HashCodeBuilder().append(context).append(type).append(endpoints).append(additionalProperties).toHashCode();
     }
 
     @Override
@@ -125,11 +107,11 @@ public class Applications {
         if (other == this) {
             return true;
         }
-        if ((other instanceof Applications) == false) {
+        if ((other instanceof Application) == false) {
             return false;
         }
-        Applications rhs = ((Applications) other);
-        return new EqualsBuilder().append(context, rhs.context).append(type, rhs.type).append(payload, rhs.payload).append(endpoints, rhs.endpoints).append(additionalProperties, rhs.additionalProperties).isEquals();
+        Application rhs = ((Application) other);
+        return new EqualsBuilder().append(context, rhs.context).append(type, rhs.type).append(endpoints, rhs.endpoints).append(additionalProperties, rhs.additionalProperties).isEquals();
     }
 
 }

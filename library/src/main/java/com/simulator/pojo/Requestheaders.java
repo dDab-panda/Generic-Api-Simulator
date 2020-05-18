@@ -17,7 +17,7 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 @JsonPropertyOrder({
     "Accept"
 })
-public class Headers {
+public class Requestheaders {
 
     @JsonProperty("Accept")
     private String accept;
@@ -34,7 +34,7 @@ public class Headers {
         this.accept = accept;
     }
 
-    public Headers withAccept(String accept) {
+    public Requestheaders withAccept(String accept) {
         this.accept = accept;
         return this;
     }
@@ -54,7 +54,7 @@ public class Headers {
         this.additionalProperties.put(name, value);
     }
 
-    public Headers withAdditionalProperty(String name, Object value) {
+    public Requestheaders withAdditionalProperty(String name, Object value) {
         this.additionalProperties.put(name, value);
         return this;
     }
@@ -69,10 +69,10 @@ public class Headers {
         if (other == this) {
             return true;
         }
-        if ((other instanceof Headers) == false) {
+        if ((other instanceof Requestheaders) == false) {
             return false;
         }
-        Headers rhs = ((Headers) other);
+        Requestheaders rhs = ((Requestheaders) other);
         return new EqualsBuilder().append(accept, rhs.accept).append(additionalProperties, rhs.additionalProperties).isEquals();
     }
 

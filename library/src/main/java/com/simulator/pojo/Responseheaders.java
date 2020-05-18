@@ -1,9 +1,7 @@
 
 package com.simulator.pojo;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
@@ -17,27 +15,27 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "applications"
+    "Content-Type"
 })
-public class Config {
+public class Responseheaders {
 
-    @JsonProperty("applications")
-    private List<Application> applications = new ArrayList<Application>();
+    @JsonProperty("Content-Type")
+    private String contentType;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("applications")
-    public List<Application> getApplications() {
-        return applications;
+    @JsonProperty("Content-Type")
+    public String getContentType() {
+        return contentType;
     }
 
-    @JsonProperty("applications")
-    public void setApplications(List<Application> applications) {
-        this.applications = applications;
+    @JsonProperty("Content-Type")
+    public void setContentType(String contentType) {
+        this.contentType = contentType;
     }
 
-    public Config withApplications(List<Application> applications) {
-        this.applications = applications;
+    public Responseheaders withContentType(String contentType) {
+        this.contentType = contentType;
         return this;
     }
 
@@ -56,14 +54,14 @@ public class Config {
         this.additionalProperties.put(name, value);
     }
 
-    public Config withAdditionalProperty(String name, Object value) {
+    public Responseheaders withAdditionalProperty(String name, Object value) {
         this.additionalProperties.put(name, value);
         return this;
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder().append(applications).append(additionalProperties).toHashCode();
+        return new HashCodeBuilder().append(contentType).append(additionalProperties).toHashCode();
     }
 
     @Override
@@ -71,11 +69,11 @@ public class Config {
         if (other == this) {
             return true;
         }
-        if ((other instanceof Config) == false) {
+        if ((other instanceof Responseheaders) == false) {
             return false;
         }
-        Config rhs = ((Config) other);
-        return new EqualsBuilder().append(applications, rhs.applications).append(additionalProperties, rhs.additionalProperties).isEquals();
+        Responseheaders rhs = ((Responseheaders) other);
+        return new EqualsBuilder().append(contentType, rhs.contentType).append(additionalProperties, rhs.additionalProperties).isEquals();
     }
 
 }
