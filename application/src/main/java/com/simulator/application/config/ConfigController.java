@@ -56,38 +56,22 @@ public class ConfigController {
 	}
 	
 	@RequestMapping("/**")
-    public @ResponseBody byte[] defaultResp(@RequestBody byte[] request)  throws ProcessingException, IOException {
+    public @ResponseBody byte[] defaultResp(@RequestBody HttpServletRequest request, @RequestBody byte[] reqbody)  throws ProcessingException, IOException {
 		
-		 String reqStr = new String(request);	
-		 ObjectMapper mapper = new ObjectMapper();
-		 Request req = new Request();
-		 try{
-			 req = mapper.readValue(reqStr, Request.class);
-		 } catch (IOException e) {
-			 logger.trace("Error occurred while valiating Request Body");
-			 e.printStackTrace();
-		 }
+		RestJsonImplementor jsonImp = new RestJsonImplementor(reqbody, request);
+		
+		String reqStr = new String();
+		reqStr = jsonImp.getBody();
+		
+		Request reqObj = new Request();
+		reqObj = jsonImp.reqMarshaling();
+		
+		jsonImp.createResponse();
+		
+		byte[] response = jsonImp.getResponseStream();
 		 
-		 String method = req.getMethod();
-		 String url = req.getUrl();
-		 Requestheaders reqHeader = req.getRequestheaders();
-		 Requestpayload reqPayload = req.getRequestpayload();
-//		 String finalUrl = (String) request.getAttribute(
-//			        HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE);
-//		 Map<String, String[]> paramap = request.getParameterMap();
-//		 
-//		 if(!paramap.isEmpty()) {
-//			 finalUrl += '?';
-//			 for(Entry<String, String[]> elem: paramap.entrySet()) {
-//				 finalUrl += (String)elem.getKey() + "=";
-//				 String[] paramval = (String[])elem.getValue();
-//				 finalUrl += paramval[0];
-//			 }	 
-//		 }
-//		 
-//		finalUrl = finalUrl.substring(10, finalUrl.length());
 //		Map<List<String>,Response> configmap = configfile.getConfigMap();
-		byte[] response = null;
+//		byte[] response = null;
 		
 //		for (Entry<List<String>, Response> mapElement: configmap.entrySet()) { 
 //			
