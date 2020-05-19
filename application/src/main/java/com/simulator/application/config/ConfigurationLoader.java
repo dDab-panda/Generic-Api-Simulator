@@ -18,12 +18,12 @@ import org.springframework.stereotype.Service;
 public class ConfigurationLoader {
 	
 	private static Config config;
-	private Map< List<String>,Response> ConfigMap;
+	private static Map< List<String>,Response> ConfigMap;
 	
 	public Config getConfig() {
 		return config;	
 	}
-	public Map<List<String>,Response> getConfigMap(){
+	public static Map<List<String>,Response> getConfigMap(){
 		return ConfigMap;
 	}
 	
@@ -38,27 +38,22 @@ public class ConfigurationLoader {
 		
 		for(Application app: apps) {
 			String cntxt = app.getContext();
-			String type = app.getType();
+			//String type = app.getType();
 			
 			List<Endpoint> endpoints = app.getEndpoints();
 			
 			for(Endpoint endp : endpoints) {
 				String method = endp.getRequest().getMethod();
 				String reqUrl = endp.getRequest().getUrl();
-				String finalUrl = cntxt+reqUrl;
+				String finalUrl = cntxt + reqUrl;
 				Response resp = endp.getResponse();
 				List<String> key = new ArrayList<String> ();
-				key.add(type);
 				key.add(finalUrl);
 				key.add(method);
 				
-				mymap.put(key,resp);
+				mymap.put(key, resp);
 			}
-		}
-		
+		}		
 		ConfigMap = mymap;
 	}
-
-	
-	
 }
