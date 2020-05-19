@@ -12,49 +12,64 @@ import org.springframework.web.servlet.HandlerMapping;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.simulator.pojo.Request;
+import com.simulator.pojo.Requestheaders;
 import com.simulator.pojo.Response;
 
 public class RestJsonImplementor implements RequestHandler {
 	
-	byte[] reqbody;
-	HttpServletRequest request;
-	Response resp;
-	String response;
-
-	public RestJsonImplementor(byte[] reqbody, HttpServletRequest request) {
-		super();
-		this.reqbody = reqbody;
-		this.request = request;
+	public class RequestContext {
+		String Endptconf;
+	    Requestheaders requestHeaders;
+	    Map<String, String> requestPayloads;
+	    Map<String, String[]> queryParams;
+	    Map<MagicData, Response> magicDataResponse;
+	    
+	    public RequestContext(byte[] reqbytes, HttpServletRequest request) {
+	    	
+	    	// Convert reqbytes to an object of type Request
+	    	String requestString = new String(reqbytes);
+	    	ObjectMapper mapper = new ObjectMapper();
+			Request req = new Request();
+			try {
+				req = mapper.readValue(requestString, Request.class);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+	    	// Setting end point configuration
+	    	Endptconf = request.getRequestURI();
+	    	
+	    	// setting Request headers
+	    	requestHeaders = req.getRequestheaders();
+	    	
+	    	// setting query parameters
+	    	queryParams = request.getParameterMap();
+	    	
+	    	
+	    }
 	}
 	
-	public String getBody() {
-		String str = new String(reqbody);
-		return str;
-	}
+	// *******************************************************************************
 	
 	public String getPath() {
-		String finalPath = (String) request.getAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE);
+		String path = request.getRequestURI();
 		Map<String, String[]> paramap = request.getParameterMap();
-
-		if(!paramap.isEmpty()) {
-			finalPath += '?';
-			for(Entry<String, String[]> elem: paramap.entrySet()) {
-				finalPath += (String)elem.getKey() + "=";
-				String[] paramval = (String[])elem.getValue();
-				finalPath += paramval[0];
+	 
+		 if(!paramap.isEmpty()) {
+			 path += '?';
+			 for(Entry<String, String[]> elem: paramap.entrySet()) {
+				 path += (String)elem.getKey() + "=";
+				 String[] paramval = (String[])elem.getValue();
+				 path += paramval[0];
 			 }	 
-		}
-		finalPath = finalPath.substring(10, finalPath.length());
-		return finalPath;
+		 }
+	 
+		 String finalPath = path.substring(10, path.length());
+		 return finalPath;
 	}
 	
 	@Override
 	public void preProcess() {
-		
-	}
-	
-	@Override
-	public void reqValidation() {
 		
 	}
 
@@ -71,15 +86,22 @@ public class RestJsonImplementor implements RequestHandler {
 	}
 	
 	@Override
+	public void reqValidation() {
+		
+	}
+	
+	@Override
 	public void createResponse() {
 		List<String> key = new ArrayList<String> ();
 		key.add(reqMarshaling().getMethod());
 		key.add(getPath());
 		
+		System.out.println(key);
+		
 		if(ConfigurationLoader.getConfigMap().containsKey(key)) {
-			response = ConfigurationLoader.getConfigMap().get(key).toString();
+			response = "dummy response";
 		}
-		else response = null;
+		else response = "";
 	}
 	
 	@Override

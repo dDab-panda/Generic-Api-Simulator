@@ -1,0 +1,40 @@
+{
+	[
+        {
+            "magicdata" :[
+                {
+                    "type": "header",
+                    "name": "accept",
+                    "value": "application/json"
+                },
+                {
+                    "type": "request",
+                    "name": "employee.address.state",
+                    "value": "delhi"
+                }
+            ],
+            "response": {
+            	..
+            	...
+            }
+        },
+        {
+            "magicdata:[
+                {
+                    "type": "header",
+                    "name": "accept",
+                    "value": "application/json"
+                },
+                {
+                    "type": "request",
+                    "name": "employee.address.state",
+                    "value": "UP"
+                }
+            ],
+            "response":  {
+                ..
+                ...
+            }
+        }    
+	]
+}

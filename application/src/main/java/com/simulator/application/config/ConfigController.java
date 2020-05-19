@@ -20,11 +20,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.ByteArrayHttpMessageConverter;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -50,50 +52,19 @@ public class ConfigController {
 	}
 	
 	@RequestMapping("/configmap")
-	public @ResponseBody Map<List<String>,Response> sendConfigMap() throws ProcessingException, IOException {
+	public @ResponseBody Map<List<String>, String> sendConfigMap() throws ProcessingException, IOException {
 		logger.trace("Configuration map accessed.");
 		return configfile.getConfigMap();
 	}
 	
 	@RequestMapping("/**")
-    public @ResponseBody byte[] defaultResp(@RequestBody HttpServletRequest request, @RequestBody byte[] reqbody)  throws ProcessingException, IOException {
+    public @ResponseBody byte[] defaultResp(@RequestBody(required = false) byte[] bytes, HttpServletRequest request)  throws ProcessingException, IOException {
+			
 		
-		RestJsonImplementor jsonImp = new RestJsonImplementor(reqbody, request);
-		
-		String reqStr = new String();
-		reqStr = jsonImp.getBody();
-		
-		Request reqObj = new Request();
-		reqObj = jsonImp.reqMarshaling();
-		
+		RestJsonImplementor jsonImp = new RestJsonImplementor(bytes, request);
+		jsonImp.reqMarshaling();
 		jsonImp.createResponse();
-		
 		byte[] response = jsonImp.getResponseStream();
-		 
-//		Map<List<String>,Response> configmap = configfile.getConfigMap();
-//		byte[] response = null;
-		
-//		for (Entry<List<String>, Response> mapElement: configmap.entrySet()) { 
-//			
-//            List<String> key = (List<String>) mapElement.getKey();
-//            String url = key.get(1);
-//            System.out.println("Url here is  = " + url);
-//            System.out.println("request url here is " + finalUrl);
-//            if(url.equals(finalUrl)) {
-//            	logger.trace("Found request url in configuration map.");
-//            	String resp = "Hi, you got your static running";
-//            	response = resp.getBytes();
-//            	break;
-//            }
-//        } 
-      
-        return response;
-        
-        // Read the URL
-        // match the URL and header from the conf.
-        // fetch right end conf for this given case.
-        
-        //home/aayush/Programming/Mastercard/springide-workspace/.metadata/.plugins/org.eclipse.jdt.ui/jdt-images/19.png
-        //send a dubby response.
-    }
+		return response;
+	}
 }

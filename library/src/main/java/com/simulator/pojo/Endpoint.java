@@ -16,15 +16,15 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
     "Request",
-    "Response",
+    "ResponseMapping",
     "customHandler"
 })
 public class Endpoint {
 
     @JsonProperty("Request")
     private Request request;
-    @JsonProperty("Response")
-    private Response response;
+    @JsonProperty("ResponseMapping")
+    private String responseMapping;
     @JsonProperty("customHandler")
     private String customHandler;
     @JsonIgnore
@@ -45,18 +45,18 @@ public class Endpoint {
         return this;
     }
 
-    @JsonProperty("Response")
-    public Response getResponse() {
-        return response;
+    @JsonProperty("ResponseMapping")
+    public String getResponseMapping() {
+        return responseMapping;
     }
 
-    @JsonProperty("Response")
-    public void setResponse(Response response) {
-        this.response = response;
+    @JsonProperty("ResponseMapping")
+    public void setResponseMapping(String responseMapping) {
+        this.responseMapping = responseMapping;
     }
 
-    public Endpoint withResponse(Response response) {
-        this.response = response;
+    public Endpoint withResponseMapping(String responseMapping) {
+        this.responseMapping = responseMapping;
         return this;
     }
 
@@ -97,7 +97,7 @@ public class Endpoint {
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder().append(request).append(response).append(customHandler).append(additionalProperties).toHashCode();
+        return new HashCodeBuilder().append(request).append(responseMapping).append(customHandler).append(additionalProperties).toHashCode();
     }
 
     @Override
@@ -109,7 +109,7 @@ public class Endpoint {
             return false;
         }
         Endpoint rhs = ((Endpoint) other);
-        return new EqualsBuilder().append(request, rhs.request).append(response, rhs.response).append(customHandler, rhs.customHandler).append(additionalProperties, rhs.additionalProperties).isEquals();
+        return new EqualsBuilder().append(request, rhs.request).append(responseMapping, rhs.responseMapping).append(customHandler, rhs.customHandler).append(additionalProperties, rhs.additionalProperties).isEquals();
     }
 
 }
