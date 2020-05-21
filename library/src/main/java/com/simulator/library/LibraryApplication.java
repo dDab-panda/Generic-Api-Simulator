@@ -14,13 +14,14 @@ public class LibraryApplication {
 		// of the (already) defined POJO class
 		Config cnf = null;
 
-		if(ValidationUtils.isJsonValidNew(jsonFile)) {
+		//TODO: Getting Invalid config
+/*		if(ValidationUtils.isJsonValidNew(jsonFile)) {
 			System.out.println("Valid configuration!");
 		}
 		else {
 			System.out.println("Invalid configuration!");
 			return cnf;
-		}
+		}*/
 		
 		ObjectMapper mapper = new ObjectMapper();
 
