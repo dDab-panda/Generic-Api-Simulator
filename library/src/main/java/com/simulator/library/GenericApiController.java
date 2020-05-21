@@ -1,3 +1,4 @@
+/*
 package com.simulator.library;
 
 import java.io.IOException;
@@ -28,16 +29,23 @@ public class GenericApiController {
 		return configfile.getConfig();
 	}
 	
+*/
+/*
 	@RequestMapping("/{reqUrl}")
     public @ResponseBody Response defaultResp(@PathVariable String reqUrl) throws ProcessingException, IOException {
+*//*
+
+
 		
 		
 		
-		
-		Map<List<String>,Response> configmap = configfile.getConfigMap();
+*/
+/*		Map<List<String>,Response> configmap = configfile.getConfigMap();
 		Response response = new Response();
-		return response;
-		/*
+		return response;*//*
+
+		*/
+/*
 		//Iterator<Entry<List<String>, Response>> mapElement;
 		//byte[] response=null;
 		//String resp = "Hi, you got your static running with url = "+ reqUrl;
@@ -55,7 +63,8 @@ public class GenericApiController {
         } 
 	
         return response;
-        */
+        *//*
+
 		
         //Read the URL
         // match the URL and header from the conf.
@@ -64,6 +73,7 @@ public class GenericApiController {
         //home/aayush/Programming/Mastercard/springide-workspace/.metadata/.plugins/org.eclipse.jdt.ui/jdt-images/19.png
         //send a dubby response.
         
-    }
+    //}
 	
 }
+*/

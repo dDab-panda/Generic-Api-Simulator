@@ -1,297 +1,156 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "object",
-  "properties": {
-    "applications": {
-      "type": "array",
-      "items": [
-        {
-          "type": "object",
-          "properties": {
-            "context": {
-              "type": "string"
-            },
-            "type": {
-              "type": "string"
-            },
-            "endpoints": {
-              "type": "array",
-              "items": [
-                {
-                  "type": "object",
-                  "properties": {
-                    "Request": {
-                      "type": "object",
-                      "properties": {
-                        "method": {
-                          "type": "string"
-                        },
-                        "url": {
-                          "type": "string"
-                        },
-                        "requestpayload": {
-                          "type": "object"
-                        },
-                        "requestheaders": {
-                          "type": "object",
-                          "properties": {
-                            "Accept": {
-                              "type": "string"
-                            }
-                          },
-                          "required": [
-                            "Accept"
-                          ]
-                        }
-                      },
-                      "required": [
-                        "method",
-                        "url",
-                        "requestpayload",
-                        "requestheaders"
-                      ]
-                    },
-                    "Response": {
-                      "type": "object",
-                      "properties": {
-                        "status": {
-                          "type": "integer"
-                        },
-                        "responsepayload": {
-                          "type": "object",
-                          "properties": {
-                            "id": {
-                              "type": "string"
-                            },
-                            "name": {
-                              "type": "string"
-                            }
-                          },
-                          "required": [
-                            "id",
-                            "name"
-                          ]
-                        },
-                        "responseheaders": {
-                          "type": "object",
-                          "properties": {
-                            "Content-Type": {
-                              "type": "string"
-                            }
-                          },
-                          "required": [
-                            "Content-Type"
-                          ]
-                        }
-                      },
-                      "required": [
-                        "status",
-                        "responsepayload",
-                        "responseheaders"
-                      ]
-                    },
-                    "customHandler": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "Request",
-                    "Response",
-                    "customHandler"
-                  ]
-                },
-                {
-                  "type": "object",
-                  "properties": {
-                    "Request": {
-                      "type": "object",
-                      "properties": {
-                        "method": {
-                          "type": "string"
-                        },
-                        "url": {
-                          "type": "string"
-                        },
-                        "requestpayload": {
-                          "type": "object",
-                          "properties": {
-                            "id": {
-                              "type": "string"
-                            },
-                            "name": {
-                              "type": "string"
-                            },
-                            "position": {
-                              "type": "string"
-                            }
-                          },
-                          "required": [
-                            "id",
-                            "name",
-                            "position"
-                          ]
-                        },
-                        "requestheaders": {
-                          "type": "object",
-                          "properties": {
-                            "Accept": {
-                              "type": "string"
-                            }
-                          },
-                          "required": [
-                            "Accept"
-                          ]
-                        }
-                      },
-                      "required": [
-                        "method",
-                        "url",
-                        "requestpayload",
-                        "requestheaders"
-                      ]
-                    },
-                    "Response": {
-                      "type": "object",
-                      "properties": {
-                        "status": {
-                          "type": "integer"
-                        },
-                        "responsepayload": {
-                          "type": "object"
-                        },
-                        "responseheaders": {
-                          "type": "object",
-                          "properties": {
-                            "Content-Type": {
-                              "type": "string"
-                            }
-                          },
-                          "required": [
-                            "Content-Type"
-                          ]
-                        }
-                      },
-                      "required": [
-                        "status",
-                        "responsepayload",
-                        "responseheaders"
-                      ]
-                    },
-                    "customHandler": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "Request",
-                    "Response",
-                    "customHandler"
-                  ]
-                }
-              ]
-            }
-          },
-          "required": [
-            "context",
-            "type",
-            "endpoints"
-          ]
-        },
-        {
-          "type": "object",
-          "properties": {
-            "context": {
-              "type": "string"
-            },
-            "type": {
-              "type": "string"
-            },
-            "endpoints": {
-              "type": "array",
-              "items": [
-                {
-                  "type": "object",
-                  "properties": {
-                    "Request": {
-                      "type": "object",
-                      "properties": {
-                        "method": {
-                          "type": "string"
-                        },
-                        "url": {
-                          "type": "string"
-                        },
-                        "requestpayload": {
-                          "type": "object"
-                        },
-                        "requestheaders": {
-                          "type": "object",
-                          "properties": {
-                            "Accept": {
-                              "type": "string"
-                            }
-                          },
-                          "required": [
-                            "Accept"
-                          ]
-                        }
-                      },
-                      "required": [
-                        "method",
-                        "url",
-                        "requestpayload",
-                        "requestheaders"
-                      ]
-                    },
-                    "Response": {
-                      "type": "object",
-                      "properties": {
-                        "status": {
-                          "type": "integer"
-                        },
-                        "responsepayload": {
-                          "type": "object"
-                        },
-                        "responseheaders": {
-                          "type": "object",
-                          "properties": {
-                            "Content-Type": {
-                              "type": "string"
-                            }
-                          },
-                          "required": [
-                            "Content-Type"
-                          ]
-                        }
-                      },
-                      "required": [
-                        "status",
-                        "responsepayload",
-                        "responseheaders"
-                      ]
-                    },
-                    "customHandler": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "Request",
-                    "Response",
-                    "customHandler"
-                  ]
-                }
-              ]
-            }
-          },
-          "required": [
-            "context",
-            "type",
-            "endpoints"
-          ]
-        }
-      ]
-    }
-  },
-  "required": [
-    "applications"
-  ]
+	"definitions": {},
+	"$schema": "http://json-schema.org/draft-07/schema#", 
+	"$id": "https://example.com/object1589911364.json", 
+	"title": "Root", 
+	"type": "object",
+	"required": [
+		"applications"
+	],
+	"properties": {
+		"applications": {
+			"$id": "#root/applications", 
+			"title": "Applications", 
+			"type": "array",
+			"default": [],
+			"items":{
+				"$id": "#root/applications/items", 
+				"title": "Items", 
+				"type": "object",
+				"required": [
+					"context",
+					"type",
+					"endpoints"
+				],
+				"properties": {
+					"context": {
+						"$id": "#root/applications/items/context", 
+						"title": "Context", 
+						"type": "string",
+						"default": "",
+						"examples": [
+							"/apiforemployee"
+						],
+						"pattern": "^.*$"
+					},
+					"type": {
+						"$id": "#root/applications/items/type", 
+						"title": "Type", 
+						"type": "string",
+						"default": "",
+						"examples": [
+							"REST"
+						],
+						"pattern": "^.*$"
+					},
+					"endpoints": {
+						"$id": "#root/applications/items/endpoints", 
+						"title": "Endpoints", 
+						"type": "array",
+						"default": [],
+						"items":{
+							"$id": "#root/applications/items/endpoints/items", 
+							"title": "Items", 
+							"type": "object",
+							"required": [
+								"Request",
+								"ResponseMapping",
+								"customHandler"
+							],
+							"properties": {
+								"Request": {
+									"$id": "#root/applications/items/endpoints/items/Request", 
+									"title": "Request", 
+									"type": "object",
+									"required": [
+										"method",
+										"url",
+										"requestpayload",
+										"requestheaders"
+									],
+									"properties": {
+										"method": {
+											"$id": "#root/applications/items/endpoints/items/Request/method", 
+											"title": "Method", 
+											"type": "string",
+											"default": "",
+											"examples": [
+												"GET"
+											],
+											"pattern": "^.*$"
+										},
+										"url": {
+											"$id": "#root/applications/items/endpoints/items/Request/url", 
+											"title": "Url", 
+											"type": "string",
+											"default": "",
+											"examples": [
+												"/test1/?id=e110"
+											],
+											"pattern": "^.*$"
+										},
+										"requestpayload": {
+											"$id": "#root/applications/items/endpoints/items/Request/requestpayload", 
+											"title": "Requestpayload", 
+											"type": "object",
+											"required": [
+											],
+											"properties": {
+											}
+										}
+,
+										"requestheaders": {
+											"$id": "#root/applications/items/endpoints/items/Request/requestheaders", 
+											"title": "Requestheaders", 
+											"type": "object",
+											"required": [
+												"Accept"
+											],
+											"properties": {
+												"Accept": {
+													"$id": "#root/applications/items/endpoints/items/Request/requestheaders/Accept", 
+													"title": "Accept", 
+													"type": "string",
+													"default": "",
+													"examples": [
+														"application/json"
+													],
+													"pattern": "^.*$"
+												}
+											}
+										}
+
+									}
+								}
+,
+								"ResponseMapping": {
+									"$id": "#root/applications/items/endpoints/items/ResponseMapping", 
+									"title": "Responsemapping", 
+									"type": "string",
+									"default": "",
+									"examples": [
+										"magic/getEmployeeMagicData.json"
+									],
+									"pattern": "^.*$"
+								},
+								"customHandler": {
+									"$id": "#root/applications/items/endpoints/items/customHandler", 
+									"title": "Customhandler", 
+									"type": "string",
+									"default": "",
+									"examples": [
+										"com.mastercard.handler.custom.RestJSONHandler"
+									],
+									"pattern": "^.*$"
+								}
+							}
+						}
+
+					}
+				}
+			}
+
+		}
+	}
 }
+

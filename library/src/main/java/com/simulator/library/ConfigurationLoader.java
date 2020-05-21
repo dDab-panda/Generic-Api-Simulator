@@ -1,3 +1,4 @@
+/*
 package com.simulator.library;
 
 import java.io.File;
@@ -11,6 +12,7 @@ import com.github.fge.jsonschema.core.exceptions.ProcessingException;
 import com.simulator.pojo.*;
 
 import javax.annotation.PostConstruct;
+import javax.xml.ws.Response;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
@@ -19,7 +21,7 @@ import org.springframework.stereotype.Service;
 public class ConfigurationLoader {
 	
 	private static Config config;
-	private Map< List<String>,Response> ConfigMap;
+	private Map< List<String>, Response> ConfigMap;
 	
 	public Config getConfig() {
 		return config;	
@@ -47,7 +49,7 @@ public class ConfigurationLoader {
 				String method = endp.getRequest().getMethod();
 				String reqUrl = endp.getRequest().getUrl();
 				String finalUrl = cntxt+reqUrl;
-				Response resp = endp.getResponse();
+				Response resp = null;//TODO: This is giving me null pointer exception. endp.getResponse();
 				List<String> key = new ArrayList<String> ();
 				key.add(type);
 				key.add(finalUrl);
@@ -63,3 +65,4 @@ public class ConfigurationLoader {
 	
 	
 }
+*/

@@ -18,12 +18,12 @@ import org.springframework.stereotype.Service;
 public class ConfigurationLoader {
 	
 	private static Config config;
-	private static Map< List<String>,Response> ConfigMap;
+	private static Map< List<String>, String> ConfigMap;
 	
 	public Config getConfig() {
 		return config;	
 	}
-	public static Map<List<String>,Response> getConfigMap(){
+	public static Map<List<String>, String> getConfigMap(){
 		return ConfigMap;
 	}
 	
@@ -32,7 +32,7 @@ public class ConfigurationLoader {
 		File jsonFile = new File("src/main/resources/config.json");
 		config = LibraryApplication.getJsonObj(jsonFile);
 		
-		Map<List<String>,Response> mymap = new HashMap< List<String>,Response>();
+		Map<List<String>, String> mymap = new HashMap< List<String>, String>();
 		
 		List<Application> apps = config.getApplications();
 		
@@ -46,12 +46,13 @@ public class ConfigurationLoader {
 				String method = endp.getRequest().getMethod();
 				String reqUrl = endp.getRequest().getUrl();
 				String finalUrl = cntxt + reqUrl;
-				Response resp = endp.getResponse();
+				String respMapping = endp.getResponseMapping();
 				List<String> key = new ArrayList<String> ();
-				key.add(finalUrl);
 				key.add(method);
+				key.add(finalUrl);
+				key.add(endp.getRequest().getRequestheaders().toString());
 				
-				mymap.put(key, resp);
+				mymap.put(key, respMapping);
 			}
 		}		
 		ConfigMap = mymap;
