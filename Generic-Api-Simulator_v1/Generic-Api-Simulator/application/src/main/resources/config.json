@@ -1,0 +1,56 @@
+{
+  "applications": [
+    {
+    "context": "/apiforemployee",
+    "type": "REST",
+    "endpoints": [
+      {
+        "Request": {
+          "method": "GET",
+          "url": "/test1/?id=e110",
+          "requestpayload": {},
+          "requestheaders": {
+            "Accept": "application/json"
+          }
+        },
+        "ResponseMapping": "magic/getEmployeeMagicData.json",
+        "customHandler": "com.mastercard.handler.custom.RestJSONHandler"
+      },
+      {
+        "Request": {
+          "method": "POST",
+          "url": "/test2",
+          "requestpayload":{
+            "id":"e12",
+            "name":"Vedant",
+            "position":"Intern"
+          },
+          "requestheaders": {
+            "Accept": "application/json"
+          }
+        },
+        "ResponseMapping": "magic/getEmployeeMagicData.json",
+        "customHandler":"null"
+      }
+    ]
+  },
+  {
+    "context": "/apiformanager",
+    "type": "REST",
+    "endpoints": [
+      {
+        "Request": {
+          "method": "DELETE",
+          "url": "/test3/?id=e110",
+          "requestpayload": {},
+          "requestheaders": {
+            "Accept": "application/json"
+          }
+        },
+        "ResponseMapping": "magic/getManagerMagicData.json",
+        "customHandler": "com.mastercard.handler.custom.RestJSONHandler"
+      }
+    ]
+    
+  }]
+}
