@@ -17,9 +17,11 @@ public class RequestContext {
     private Application application;
     private String url;
     private String method;
+    private String type;
     private Map<String,String> requestHeaders;
     private Map<String,String> requestPayloads;
     private Map<String,String> queryParams;
+    private String responseData;
 
     public byte[] getByteStream() {
         return byteStream;
@@ -85,5 +87,21 @@ public class RequestContext {
 
     public void setMethod(String method) {
         this.method = method;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getResponseData() {
+        return responseData;
+    }
+
+    public void setResponseData(String responseData) {
+        this.responseData = responseData;
     }
 }

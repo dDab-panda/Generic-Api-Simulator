@@ -9,8 +9,11 @@ import java.util.Map.Entry;
 import javax.servlet.http.HttpServletRequest;
 
 import com.simulator.application.config.ConfigurationLoader;
+import com.simulator.exceptions.NoEndpointFoundException;
 import com.simulator.handler.IRequestHandler;
 import com.simulator.handler.RequetHandlerFactory;
+import com.simulator.pojo.config.ConfigKey;
+import com.simulator.pojo.config.ConfigValue;
 import com.simulator.service.RequestContext;
 import org.json.JSONException;
 import org.json.simple.parser.ParseException;
@@ -33,7 +36,7 @@ public class EndpointController {
 	static final Logger logger = LoggerFactory.getLogger(EndpointController.class);
 
 	@Autowired
-	public ConfigurationLoader configfile;
+	public ConfigurationLoader configurationLoader;
 
 	@Autowired
 	private RequestContext requestContext;
@@ -41,7 +44,6 @@ public class EndpointController {
 	@Autowired
 	private RequetHandlerFactory requestHandlerFactory;
 
-	
 	@RequestMapping("/**")
     public @ResponseBody byte[] defaultResp(@RequestBody(required = false) byte[] bytes, HttpServletRequest request) throws ProcessingException, IOException, JSONException, ParseException {
 		CreatetRequestContext(request, bytes);
@@ -55,15 +57,28 @@ public class EndpointController {
 
 	private void CreatetRequestContext(HttpServletRequest request, byte[] requestBody){
 		//get the application and endpoint from conf
-		getRequestContext().setApplication(null); //TODO
-		getRequestContext().setEndpoint(null); //TODO
-		getRequestContext().setMethod(null);//TODO
-		getRequestContext().setUrl(null);//TODO
+		getRequestContext().setByteStream(requestBody);
+		getRequestContext().setMethod(request.getMethod());
+		getRequestContext().setUrl(getPath(request));
+		getRequestContext().setType("REST");
+
+		ConfigValue configValue  = getConfigValue();
+		if(configValue == null){
+			throw new NoEndpointFoundException();
+		}
+		getRequestContext().setApplication(configValue.getApplication());
+		getRequestContext().setEndpoint(configValue.getEndpoint());
 		getRequestContext().setRequestHeaders(null);//TODO
 		getRequestContext().setQueryParams(null);//TODO
-		getRequestContext().setRequestPayloads(null);//TODO
-		getRequestContext().setByteStream(requestBody);
+	}
 
+	private ConfigValue getConfigValue(){
+		ConfigKey key = new ConfigKey(
+				getRequestContext().getType(),
+				getRequestContext().getUrl(),
+				getRequestContext().getMethod());
+
+		return configurationLoader.getConfigMap().get(key);
 	}
 
 	private String getPath(HttpServletRequest request) {
