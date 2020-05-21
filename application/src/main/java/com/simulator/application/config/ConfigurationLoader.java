@@ -29,7 +29,7 @@ public class ConfigurationLoader {
 	
 	@PostConstruct
 	public void loadConfig() throws ProcessingException, IOException {
-		File jsonFile = new File("src/main/resources/config.json");
+		File jsonFile = new File(getClass().getClassLoader().getResource("config.json").getFile());
 		config = LibraryApplication.getJsonObj(jsonFile);
 		
 		Map<List<String>, String> mymap = new HashMap< List<String>, String>();
