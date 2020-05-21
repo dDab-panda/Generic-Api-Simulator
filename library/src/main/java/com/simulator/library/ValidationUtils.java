@@ -110,9 +110,8 @@ public class ValidationUtils {
     
     public static boolean isJsonValidNew(File jsonFile) throws ProcessingException, IOException {
     	String schemapath = System.getProperty("user.dir");
-    	schemapath = schemapath.substring(0,schemapath.length()-11);
     	//TODO: change the logic to get file from class path
-    	schemapath="C:/Intern/Generic-Api-Simulator/application/src/main/resources/schema.json";
+    	schemapath+="library/src/main/resources/schema.json";
     	
     	System.out.println(schemapath);
     	File schemaFile = new File(schemapath);

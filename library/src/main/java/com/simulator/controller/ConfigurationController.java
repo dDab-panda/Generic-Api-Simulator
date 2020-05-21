@@ -2,10 +2,11 @@ package com.simulator.controller;
 
 import com.github.fge.jsonschema.core.exceptions.ProcessingException;
 import com.simulator.application.config.ConfigurationLoader;
-import com.simulator.handler.RequetHandlerFactory;
+import com.simulator.handler.RequestHandlerFactory;
 import com.simulator.pojo.Config;
 import com.simulator.pojo.config.ConfigKey;
 import com.simulator.pojo.config.ConfigValue;
+import com.simulator.pojo.response.mapping.ResponseMapping;
 import com.simulator.service.RequestContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,7 +32,7 @@ public class ConfigurationController {
     private RequestContext requestContext;
 
     @Autowired
-    private RequetHandlerFactory requestHandlerFactory;
+    private RequestHandlerFactory requestHandlerFactory;
 
 
     @RequestMapping("/config")
@@ -46,5 +47,11 @@ public class ConfigurationController {
     Map<ConfigKey, ConfigValue> sendConfigMap() throws ProcessingException, IOException {
         logger.trace("Configuration map accessed.");
         return configfile.getConfigMap();
+    }
+    @RequestMapping("/responsemapping")
+    public @ResponseBody
+    List<ResponseMapping> sendResponseMapping() throws ProcessingException, IOException {
+        logger.trace("Response Mapping sent.");
+        return configfile.getResponseMapping();
     }
 }

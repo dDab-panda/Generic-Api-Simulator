@@ -1,12 +1,13 @@
 package com.simulator.service;
 
+import java.util.List;
 import java.util.Map;
 
 import com.simulator.pojo.Application;
 import com.simulator.pojo.Endpoint;
+import com.simulator.pojo.response.mapping.ResponseMapping;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.WebApplicationContext;
 
@@ -20,8 +21,9 @@ public class RequestContext {
     private String type;
     private Map<String,String> requestHeaders;
     private Map<String,String> requestPayloads;
-    private Map<String,String> queryParams;
-    private String responseData;
+    private Map<String,String[]> queryParams;
+    private byte[] byteStream;
+    private List<ResponseMapping> responseMappingList;
 
     public byte[] getByteStream() {
         return byteStream;
@@ -31,7 +33,13 @@ public class RequestContext {
         this.byteStream = byteStream;
     }
 
-    private byte[] byteStream;
+    public List<ResponseMapping> getResponseMappingList() {
+        return responseMappingList;
+    }
+
+    public void setResponseMappingList(List<ResponseMapping> responseMappingList) {
+        this.responseMappingList = responseMappingList;
+    }
 
     public Endpoint getEndpoint() {
         return endpoint;
@@ -65,11 +73,11 @@ public class RequestContext {
         this.requestPayloads = requestPayloads;
     }
 
-    public Map<String, String> getQueryParams() {
+    public Map<String, String[]> getQueryParams() {
         return queryParams;
     }
 
-    public void setQueryParams(Map<String, String> queryParams) {
+    public void setQueryParams(Map<String, String[]> queryParams) {
         this.queryParams = queryParams;
     }
 
@@ -97,11 +105,4 @@ public class RequestContext {
         this.type = type;
     }
 
-    public String getResponseData() {
-        return responseData;
-    }
-
-    public void setResponseData(String responseData) {
-        this.responseData = responseData;
-    }
 }
