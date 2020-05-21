@@ -4,9 +4,9 @@ import java.util.Map;
 
 import com.simulator.pojo.Application;
 import com.simulator.pojo.Endpoint;
+
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.WebApplicationContext;
 
@@ -17,9 +17,9 @@ public class RequestContext {
     private Application application;
     private String url;
     private String method;
-    private Map<String,String> requestHeaders;
-    private Map<String,String> requestPayloads;
-    private Map<String,String> queryParams;
+    private Map<String, String> requestHeaders;
+    private Map<String, String> requestPayloads;
+    private Map<String, String[]> queryParams;
 
     public byte[] getByteStream() {
         return byteStream;
@@ -36,7 +36,7 @@ public class RequestContext {
     }
 
     public void setEndpoint(Endpoint endpoint) {
-        this.endpoint = endpoint;
+    		this.endpoint = endpoint;
     }
 
     public Application getApplication() {
@@ -44,14 +44,14 @@ public class RequestContext {
     }
 
     public void setApplication(Application application) {
-        this.application = application;
+    	application = this.application;
     }
 
     public Map<String, String> getRequestHeaders() {
         return requestHeaders;
     }
 
-    public void setRequestHeaders(Map<String, String> requestHeaders) {
+    public void setRequestHeaders(Map<String,String> requestHeaders) {
         this.requestHeaders = requestHeaders;
     }
 
@@ -63,11 +63,11 @@ public class RequestContext {
         this.requestPayloads = requestPayloads;
     }
 
-    public Map<String, String> getQueryParams() {
+    public Map<String, String[]> getQueryParams() {
         return queryParams;
     }
 
-    public void setQueryParams(Map<String, String> queryParams) {
+    public void setQueryParams(Map<String, String[]> queryParams) {
         this.queryParams = queryParams;
     }
 

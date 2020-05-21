@@ -11,9 +11,9 @@ import org.springframework.util.StringUtils;
 
 public final class JsonToMapConvertorUtil {
 
-    public static Map<String,String> convertJsonToMap(String jsonStr) throws JsonProcessingException {
+    public static Map<String, String> convertJsonToMap(String jsonStr) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
-        Map<String,String> resolvedMap = new LinkedHashMap<>();
+        Map<String, String> resolvedMap = new LinkedHashMap<>();
         Map<String, Object> requestMap = mapper.readValue(jsonStr,
                 new TypeReference<Map<String, Object>>() {});
         convertToMap(requestMap, resolvedMap, null);
