@@ -13,16 +13,7 @@
             "Accept": "application/json"
           }
         },
-        "Response": {
-          "status": 200,
-          "responsepayload": {
-            "id":"e110",
-            "name":"Rathore"
-          },
-          "responseheaders": {
-            "Content-Type": "application/json"
-          }
-        },
+        "ResponseMapping": "magic/getEmployeeMagicData.json",
         "customHandler": "com.mastercard.handler.custom.RestJSONHandler"
       },
       {
@@ -38,13 +29,7 @@
             "Accept": "application/json"
           }
         },
-        "Response": {
-          "status": 200,
-          "responsepayload": {},
-          "responseheaders": {
-            "Content-Type": "application/json"
-          }
-        },
+        "ResponseMapping": "magic/getEmployeeMagicData.json",
         "customHandler":"null"
       }
     ]
@@ -62,13 +47,7 @@
             "Accept": "application/json"
           }
         },
-        "Response": {
-          "status": 200,
-          "responsepayload": {},
-          "responseheaders": {
-            "Content-Type": "application/json"
-          }
-        },
+        "ResponseMapping": "magic/getManagerMagicData.json",
         "customHandler": "com.mastercard.handler.custom.RestJSONHandler"
       }
     ]

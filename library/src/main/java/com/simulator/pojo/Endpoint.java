@@ -2,6 +2,7 @@
 package com.simulator.pojo;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
@@ -9,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.simulator.pojo.response.mapping.ResponseMapping;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
@@ -16,19 +18,21 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
     "Request",
-    "Response",
+    "ResponseMapping",
     "customHandler"
 })
 public class Endpoint {
 
     @JsonProperty("Request")
     private Request request;
-    @JsonProperty("Response")
-    private Response response;
+    @JsonProperty("ResponseMapping")
+    private String responseMapping;
     @JsonProperty("customHandler")
     private String customHandler;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+    List<ResponseMapping> responseMappings;
 
     @JsonProperty("Request")
     public Request getRequest() {
@@ -45,18 +49,18 @@ public class Endpoint {
         return this;
     }
 
-    @JsonProperty("Response")
-    public Response getResponse() {
-        return response;
+    @JsonProperty("ResponseMapping")
+    public String getResponseMapping() {
+        return responseMapping;
     }
 
-    @JsonProperty("Response")
-    public void setResponse(Response response) {
-        this.response = response;
+    @JsonProperty("ResponseMapping")
+    public void setResponseMapping(String responseMapping) {
+        this.responseMapping = responseMapping;
     }
 
-    public Endpoint withResponse(Response response) {
-        this.response = response;
+    public Endpoint withResponseMapping(String responseMapping) {
+        this.responseMapping = responseMapping;
         return this;
     }
 
@@ -95,9 +99,17 @@ public class Endpoint {
         return this;
     }
 
+    public List<ResponseMapping> getResponseMappings() {
+        return responseMappings;
+    }
+
+    public void setResponseMappings(List<ResponseMapping> responseMappings) {
+        this.responseMappings = responseMappings;
+    }
+
     @Override
     public int hashCode() {
-        return new HashCodeBuilder().append(request).append(response).append(customHandler).append(additionalProperties).toHashCode();
+        return new HashCodeBuilder().append(request).append(responseMapping).append(customHandler).append(additionalProperties).toHashCode();
     }
 
     @Override
@@ -109,7 +121,7 @@ public class Endpoint {
             return false;
         }
         Endpoint rhs = ((Endpoint) other);
-        return new EqualsBuilder().append(request, rhs.request).append(response, rhs.response).append(customHandler, rhs.customHandler).append(additionalProperties, rhs.additionalProperties).isEquals();
+        return new EqualsBuilder().append(request, rhs.request).append(responseMapping, rhs.responseMapping).append(customHandler, rhs.customHandler).append(additionalProperties, rhs.additionalProperties).isEquals();
     }
 
 }
