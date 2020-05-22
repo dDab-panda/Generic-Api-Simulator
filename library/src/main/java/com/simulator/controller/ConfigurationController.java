@@ -54,4 +54,5 @@ public class ConfigurationController {
         logger.trace("Response Mapping sent.");
         return configfile.getResponseMapping();
     }
+
 }
