@@ -13,7 +13,7 @@
             "Accept": "application/json"
           }
         },
-        "ResponseMapping": "magic/getEmployeeMagicData.json",
+        "ResponseMapping": "magic/EmployeeMagicData2.json",
         "customHandler": "com.mastercard.handler.custom.RestJSONHandler"
       },
       {
@@ -29,7 +29,7 @@
             "Accept": "application/json"
           }
         },
-        "ResponseMapping": "magic/getEmployeeMagicData.json",
+        "ResponseMapping": "magic/EmployeeMagicData.json",
         "customHandler":"null"
       }
     ]
@@ -47,7 +47,7 @@
             "Accept": "application/json"
           }
         },
-        "ResponseMapping": "magic/getManagerMagicData.json",
+        "ResponseMapping": "magic/EmployeeMagicData.json",
         "customHandler": "com.mastercard.handler.custom.RestJSONHandler"
       }
     ]

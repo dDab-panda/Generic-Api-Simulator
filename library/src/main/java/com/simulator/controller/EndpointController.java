@@ -65,6 +65,7 @@ public class EndpointController {
 		getRequestContext().setType("REST");
 
 		ConfigValue configValue  = getConfigValue();
+		logger.info(configValue.toString());
 		if(configValue == null){
 			throw new NoEndpointFoundException();
 		}
@@ -72,7 +73,6 @@ public class EndpointController {
 		getRequestContext().setEndpoint(configValue.getEndpoint());
 		getRequestContext().setRequestHeaders(getHeaderMap(request));
 		getRequestContext().setQueryParams(request.getParameterMap());
-		getRequestContext().setResponseMappingList(configurationLoader.getResponseMapping());
 	}
 
 	private ConfigValue getConfigValue(){
@@ -80,7 +80,7 @@ public class EndpointController {
 		String url = getRequestContext().getUrl();
 		String method = getRequestContext().getMethod();
 		ConfigKey key = new ConfigKey(type,url,method);
-
+		logger.info("type = " +type+"s url = " +url+" method = " +method);
 		return configurationLoader.getConfigMap().get(key);
 	}
 
@@ -95,7 +95,7 @@ public class EndpointController {
 				String paramkey =  (String)elem.getKey();
 				String[] paramvals = (String[])elem.getValue();
 				for(String paramval: paramvals){
-					path+=paramkey+"="+paramkey+"&";
+					path+=paramkey+"="+paramval+"&";
 				}
 			}
 			path = StringUtils.chop(path);

@@ -48,11 +48,5 @@ public class ConfigurationController {
         logger.trace("Configuration map accessed.");
         return configfile.getConfigMap();
     }
-    @RequestMapping("/responsemapping")
-    public @ResponseBody
-    List<ResponseMapping> sendResponseMapping() throws ProcessingException, IOException {
-        logger.trace("Response Mapping sent.");
-        return configfile.getResponseMapping();
-    }
 
 }

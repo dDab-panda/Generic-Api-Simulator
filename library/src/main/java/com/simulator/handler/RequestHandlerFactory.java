@@ -18,7 +18,6 @@ public final class RequestHandlerFactory {
        RequestContext context = getRequestContext();
        /*  String acceptType = context.getRequestHeaders().get("Accept");
         String type = context.getApplication().getType();
-        String method = context.getMethod();
 
         if(type == "REST")
         {

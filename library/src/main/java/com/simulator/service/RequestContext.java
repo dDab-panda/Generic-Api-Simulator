@@ -19,21 +19,13 @@ public class RequestContext {
     private String url;
     private String method;
     private String type;
+
     private Map<String,String> requestHeaders;
     private Map<String,String> requestPayloads;
     private Map<String,String[]> queryParams;
     private byte[] byteStream;
-    private String response;
-
-    public String getResponse() {
-        return response;
-    }
-
-    public void setResponse(String response) {
-        this.response = response;
-    }
-
     private List<ResponseMapping> responseMappingList;
+    private String response;
 
     public byte[] getByteStream() {
         return byteStream;
@@ -115,4 +107,11 @@ public class RequestContext {
         this.type = type;
     }
 
+    public String getResponse() {
+        return response;
+    }
+
+    public void setResponse(String response) {
+        this.response = response;
+    }
 }
