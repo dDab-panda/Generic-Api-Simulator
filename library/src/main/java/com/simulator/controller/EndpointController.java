@@ -50,7 +50,7 @@ public class EndpointController {
 		CreateRequestContext(request, bytes);
 
 		IRequestHandler handler = requestHandlerFactory.getHandler();
-
+		logger.trace("handler recived");
 		handler.reqMarshaling();
 		handler.createResponse();
 		return handler.getResponseStream();
@@ -58,12 +58,14 @@ public class EndpointController {
 
 	private void CreateRequestContext(HttpServletRequest request, byte[] requestBody){
 		//get the application and endpoint from conf
+		logger.trace("Creating request context");
 		getRequestContext().setByteStream(requestBody);
 		getRequestContext().setMethod(request.getMethod());
 		getRequestContext().setUrl(getPath(request));
 		getRequestContext().setType("REST");
 
 		ConfigValue configValue  = getConfigValue();
+		logger.info(configValue.toString());
 		if(configValue == null){
 			throw new NoEndpointFoundException();
 		}
@@ -74,11 +76,11 @@ public class EndpointController {
 	}
 
 	private ConfigValue getConfigValue(){
-		ConfigKey key = new ConfigKey(
-				getRequestContext().getType(),
-				getRequestContext().getUrl(),
-				getRequestContext().getMethod());
-
+		String type = getRequestContext().getType();
+		String url = getRequestContext().getUrl();
+		String method = getRequestContext().getMethod();
+		ConfigKey key = new ConfigKey(type,url,method);
+		logger.info("type = " +type+"s url = " +url+" method = " +method);
 		return configurationLoader.getConfigMap().get(key);
 	}
 
@@ -93,12 +95,12 @@ public class EndpointController {
 				String paramkey =  (String)elem.getKey();
 				String[] paramvals = (String[])elem.getValue();
 				for(String paramval: paramvals){
-					path+=paramkey+"="+paramkey+"&";
+					path+=paramkey+"="+paramval+"&";
 				}
 			}
-			finalPath = StringUtils.chop(path);
+			path = StringUtils.chop(path);
 		}
-		else finalPath = path;
+		finalPath = path.substring(10,path.length());
 		return finalPath;
 	}
 	private Map<String, String> getHeaderMap(HttpServletRequest request) {

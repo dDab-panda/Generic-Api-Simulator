@@ -8,8 +8,8 @@
             },
             {
                 "type":"request",
-                "name":"employee.address.state",
-                "value":"delhi"
+                "name":"name.fname",
+                "value":"mitesh"
             }
         ],
         "response":{
