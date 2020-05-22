@@ -27,11 +27,11 @@ public class ConfigurationLoader {
 	private static Config config;
 	private static Map<ConfigKey, ConfigValue> configMap;
 	private static List<ResponseMapping> responseMapping;
-	private static ResponseMapping responseMappingsingle;
+	//private static ResponseMapping responseMappingsingle;
 
-	public ResponseMapping getResponseMappingsingle() {
+	/*public ResponseMapping getResponseMappingsingle() {
 		return responseMappingsingle;
-	}
+	}*/
 
 	public Map<ConfigKey, ConfigValue> getConfigMap(){
 		return configMap;
@@ -77,6 +77,7 @@ public class ConfigurationLoader {
 		File magicFile = new File(magicFilepath);
 		this.responseMapping = ResponseMapping.getMappingFromMagicFile(magicFile);
 		logger.trace("Response map loaded");
+
 
 
 	}

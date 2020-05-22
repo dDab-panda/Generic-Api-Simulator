@@ -72,6 +72,7 @@ public class EndpointController {
 		getRequestContext().setEndpoint(configValue.getEndpoint());
 		getRequestContext().setRequestHeaders(getHeaderMap(request));
 		getRequestContext().setQueryParams(request.getParameterMap());
+		getRequestContext().setResponseMappingList(configurationLoader.getResponseMapping());
 	}
 
 	private ConfigValue getConfigValue(){

@@ -23,6 +23,16 @@ public class RequestContext {
     private Map<String,String> requestPayloads;
     private Map<String,String[]> queryParams;
     private byte[] byteStream;
+    private String response;
+
+    public String getResponse() {
+        return response;
+    }
+
+    public void setResponse(String response) {
+        this.response = response;
+    }
+
     private List<ResponseMapping> responseMappingList;
 
     public byte[] getByteStream() {
