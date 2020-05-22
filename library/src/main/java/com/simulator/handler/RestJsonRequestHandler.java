@@ -40,6 +40,7 @@ public class RestJsonRequestHandler implements IRequestHandler {
 
     @Override
     public void createResponse() {
+
         logger.info("request payload received {}", requestContext.getRequestPayloads());
     }
 
