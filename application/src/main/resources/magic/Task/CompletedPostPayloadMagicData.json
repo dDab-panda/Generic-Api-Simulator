@@ -1,0 +1,21 @@
+[
+  {
+    "magicdata": [
+      {
+        "type": "header",
+        "name": "accept",
+        "value": "application/json"
+      }
+    ],
+    "response": {
+      "task" : [
+        {
+          "id" : "TID953",
+          "title" : "BGA",
+          "completeFlag" : "true",
+          "assignedUser" : "brad"
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,35 @@
+[
+  {
+    "magicdata": [
+      {
+        "type": "header",
+        "name": "accept",
+        "value": "application/json"
+      },
+      {
+        "type": "request",
+        "name": "id",
+        "value": "phil"
+      },
+      {
+        "type": "request",
+        "name": "nick",
+        "value": "phil"
+      },
+      {
+        "type": "request",
+        "name": "name",
+        "value": "Philips Brown"
+      }
+    ],
+    "response": {
+      "task" : [
+        {
+          "id" : "phil",
+          "nick" : "phil",
+          "name" : "Philips Brown"
+        }
+      ]
+    }
+  }
+]

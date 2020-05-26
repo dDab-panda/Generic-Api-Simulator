@@ -1,44 +1,144 @@
 {
    "applications":[
       {
-         "context":"/employee",
+         "context":"/task",
          "type":"REST",
          "endpoints":[
             {
                "Request":{
                   "method":"GET",
-                  "url":"?id=empid",
+                  "url":"/",
                   "requestheaders":{
                      "Accept":"application/json"
                   }
                },
-               "ResponseMapping":"magic/employeeGetMagicData.json"
+               "ResponseMapping":"magic/Task/GetListPayloadMagicData.json"
             },
             {
                "Request":{
                   "method":"POST",
-                  "url":"",
+                  "url":"/",
                   "requestheaders":{
                      "Accept":"application/json"
                   }
                },
-               "ResponseMapping":"magic/employeePostMagicData.json"
+               "ResponseMapping":"magic/Task/PostPayloadMagicData.json"
+            },
+            {
+               "Request":{
+                  "method":"GET",
+                  "url":"/TID764",
+                  "requestheaders":{
+                     "Accept":"application/json"
+                  }
+               },
+               "ResponseMapping":"magic/Task/GetPayloadMagicData.json"
+            },
+            {
+               "Request":{
+                  "method":"PUT",
+                  "url":"/TID121",
+                  "requestheaders":{
+                     "Accept":"application/json"
+                  }
+               },
+               "ResponseMapping":"magic/Task/PutPayloadMagicData.json"
+            },
+            {
+               "Request":{
+                  "method":"DELETE",
+                  "url":"/TID666",
+                  "requestheaders":{
+                     "Accept":"application/json"
+                  }
+               },
+               "ResponseMapping":"magic/Task/DeletePayloadMagicData.json"
+            },
+            {
+               "Request":{
+                  "method":"POST",
+                  "url":"/completed/TID953",
+                  "requestheaders":{
+                     "Accept":"application/json"
+                  }
+               },
+               "ResponseMapping":"magic/Task/CompletedPostPayloadMagicData.json"
+            },
+            {
+               "Request":{
+                  "method":"POST",
+                  "url":"/assign/TID345",
+                  "requestheaders":{
+                     "Accept":"application/json"
+                  }
+               },
+               "ResponseMapping":"magic/Task/AssignPostPayloadMagicData.json"
+            },
+            {
+               "Request":{
+                  "method":"GET",
+                  "url":"/?title=LAX",
+                  "requestheaders":{
+                     "Accept":"application/json"
+                  }
+               },
+               "ResponseMapping":"magic/Task/FilterTitlePayloadMagicData.json"
             }
          ]
       },
       {
-         "context":"/admin/employee",
+         "context":"/user",
          "type":"REST",
          "endpoints":[
             {
                "Request":{
-                  "method":"DELETE",
-                  "url":"?id=e110",
+                  "method":"GET",
+                  "url":"/",
                   "requestheaders":{
                      "Accept":"application/json"
                   }
                },
-               "ResponseMapping":"magic/EmployeeDeleteMagicData.json"
+               "ResponseMapping":"magic/User/GetListPayloadMagicData.json"
+            },
+            {
+               "Request":{
+                  "method":"POST",
+                  "url":"/",
+                  "requestheaders":{
+                     "Accept":"application/json"
+                  }
+               },
+               "ResponseMapping":"magic/User/PostPayloadMagicData.json"
+            },
+            {
+               "Request":{
+                  "method":"GET",
+                  "url":"/alice",
+                  "requestheaders":{
+                     "Accept":"application/json"
+                  }
+               },
+               "ResponseMapping":"magic/User/GetPayloadMagicData.json"
+            },
+            {
+               "Request":{
+                  "method":"PUT",
+                  "url":"/brad",
+                  "requestheaders":{
+                     "Accept":"application/json"
+                  }
+               },
+               "ResponseMapping":"magic/User/PutPayloadMagicData.json"
+            },
+            {
+               "Request":{
+                  "method":"GET",
+                  "url":"/?name=alice",
+                  "requestheaders":{
+                     "Accept":"application/json"
+                  }
+               },
+               "ResponseMapping":"magic/User/FilterTitlePayloadMagicData.json"
             }
          ]
       }

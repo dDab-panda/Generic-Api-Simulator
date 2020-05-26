@@ -1,0 +1,20 @@
+[
+  {
+    "magicdata": [
+      {
+        "type": "header",
+        "name": "accept",
+        "value": "application/json"
+      }
+    ],
+    "response": {
+      "task" : [
+        {
+          "id" : "alice",
+          "nick" : "alice",
+          "name" : "Alice Teddington"
+        }
+      ]
+    }
+  }
+]
