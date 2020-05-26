@@ -58,16 +58,19 @@ public class RestJsonRequestHandler implements IRequestHandler {
     @Override
     public void createResponse() {
         List<ResponseMapping> responseMappings = requestContext.getEndpoint().getResponseMappings();
-        for(ResponseMapping resMap : responseMappings){
+        for(ResponseMapping resMap : responseMappings) {
             boolean flag = true;
-            for(MagicData magicdata: resMap.getMagicdata()){
-                if(! isMagicDataMatching(magicdata)){
+            for(MagicData magicdata: resMap.getMagicdata()) {
+                if(! isMagicDataMatching(magicdata)) {
                     flag = false;
                     break;
                 }
             }
-            if (flag){
+            if(flag) {
                 requestContext.setResponse(resMap.getMagicResponse().getResponse());
+            }
+            else {
+            	requestContext.setResponse("Response not found.");
             }
         }
         logger.info("request payload received {}", requestContext.getRequestPayloads());
@@ -86,8 +89,8 @@ public class RestJsonRequestHandler implements IRequestHandler {
         } else if(magicData.getType() == RequestType.request){
             map = requestContext.getRequestPayloads();
         }
-        if( magicData.getValue().equals(
-                map.get(magicData.getName()) ) ){
+        if(magicData.getValue().equals(
+                map.get(magicData.getName()))) {
             return true;
         } else {
             return false;

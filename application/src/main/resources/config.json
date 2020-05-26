@@ -1,56 +1,46 @@
 {
-  "applications": [
-    {
-    "context": "/apiforemployee",
-    "type": "REST",
-    "endpoints": [
+   "applications":[
       {
-        "Request": {
-          "method": "GET",
-          "url": "/test1/?id=e110",
-          "requestpayload": {},
-          "requestheaders": {
-            "Accept": "application/json"
-          }
-        },
-        "ResponseMapping": "magic/EmployeeMagicData2.json",
-        "customHandler": "com.mastercard.handler.custom.RestJSONHandler"
+         "context":"/employee",
+         "type":"REST",
+         "endpoints":[
+            {
+               "Request":{
+                  "method":"GET",
+                  "url":"?id=empid",
+                  "requestheaders":{
+                     "Accept":"application/json"
+                  }
+               },
+               "ResponseMapping":"magic/employeeGetMagicData.json"
+            },
+            {
+               "Request":{
+                  "method":"POST",
+                  "url":"",
+                  "requestheaders":{
+                     "Accept":"application/json"
+                  }
+               },
+               "ResponseMapping":"magic/employeePostMagicData.json"
+            }
+         ]
       },
       {
-        "Request": {
-          "method": "POST",
-          "url": "/test2",
-          "requestpayload":{
-            "id":"e12",
-            "name":"Vedant",
-            "position":"Intern"
-          },
-          "requestheaders": {
-            "Accept": "application/json"
-          }
-        },
-        "ResponseMapping": "magic/EmployeeMagicData.json",
-        "customHandler":"null"
+         "context":"/admin/employee",
+         "type":"REST",
+         "endpoints":[
+            {
+               "Request":{
+                  "method":"DELETE",
+                  "url":"?id=e110",
+                  "requestheaders":{
+                     "Accept":"application/json"
+                  }
+               },
+               "ResponseMapping":"magic/EmployeeDeleteMagicData.json"
+            }
+         ]
       }
-    ]
-  },
-  {
-    "context": "/apiformanager",
-    "type": "REST",
-    "endpoints": [
-      {
-        "Request": {
-          "method": "DELETE",
-          "url": "/test3/?id=e110",
-          "requestpayload": {},
-          "requestheaders": {
-            "Accept": "application/json"
-          }
-        },
-        "ResponseMapping": "magic/EmployeeMagicData.json",
-        "customHandler": "com.mastercard.handler.custom.RestJSONHandler"
-      }
-    ]
-    
-  }]
+   ]
 }

@@ -7,10 +7,15 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import java.lang.reflect.Field; 
+
+
 import javax.servlet.http.HttpServletRequest;
 
 import com.simulator.application.config.ConfigurationLoader;
 import com.simulator.exceptions.NoEndpointFoundException;
+import com.simulator.exceptions.NoQueryParamFoundException;
+import com.simulator.exceptions.NoRequestBodyFoundException;
 import com.simulator.handler.IRequestHandler;
 import com.simulator.handler.RequestHandlerFactory;
 import com.simulator.pojo.config.ConfigKey;
@@ -59,20 +64,32 @@ public class EndpointController {
 	private void CreateRequestContext(HttpServletRequest request, byte[] requestBody){
 		//get the application and endpoint from conf
 		logger.trace("Creating request context");
+				if((requestBody == null || requestBody.length == 0)
+				&& (request.getMethod().contentEquals("POST") || request.getMethod().equals("PUT"))) { 
+			
+			throw new NoRequestBodyFoundException(request.getMethod());
+		}
 		getRequestContext().setByteStream(requestBody);
 		getRequestContext().setMethod(request.getMethod());
+		
+		if((request.getMethod().equals("DELETE"))
+				&& (request.getParameterMap().isEmpty() || request.getParameterMap() == null)) {
+			throw new NoQueryParamFoundException(request.getMethod());
+		}
+		
 		getRequestContext().setUrl(getPath(request));
 		getRequestContext().setType("REST");
 
 		ConfigValue configValue  = getConfigValue();
-		logger.info(configValue.toString());
-		if(configValue == null){
+				logger.info(configValue.toString());
+		if(configValue == null) {
 			throw new NoEndpointFoundException();
 		}
 		getRequestContext().setApplication(configValue.getApplication());
 		getRequestContext().setEndpoint(configValue.getEndpoint());
 		getRequestContext().setRequestHeaders(getHeaderMap(request));
 		getRequestContext().setQueryParams(request.getParameterMap());
+		
 	}
 
 	private ConfigValue getConfigValue(){

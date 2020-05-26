@@ -34,7 +34,6 @@ public class ConfigurationController {
     @Autowired
     private RequestHandlerFactory requestHandlerFactory;
 
-
     @RequestMapping("/config")
     public @ResponseBody
     Config sendConfig() throws ProcessingException, IOException {

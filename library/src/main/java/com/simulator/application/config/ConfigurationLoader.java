@@ -68,14 +68,14 @@ public class ConfigurationLoader {
 
 
 	public static List<ResponseMapping> getMappingFromMagicFile(File magicFile){
-		List<ResponseMapping> responseMappingList=null;
+		List<ResponseMapping> responseMappingList = null;
 		ObjectMapper mapper = new ObjectMapper();
 		SimpleModule module = new SimpleModule();
-		module.addDeserializer( MagicResponse.class, new CustomMagicResponseMappingDeserializer());
+		module.addDeserializer(MagicResponse.class, new CustomMagicResponseMappingDeserializer());
 		mapper.registerModule(module);
 
 		try {
-			responseMappingList = mapper.readValue(magicFile, new TypeReference<List<ResponseMapping>>(){});
+			responseMappingList = mapper.readValue(magicFile, new TypeReference<List<ResponseMapping>> () {});
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

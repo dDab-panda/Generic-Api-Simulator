@@ -1,16 +1,16 @@
 [
   {
-    "magicdata":[
+    "magicdata": [
       {
-        "type":"header",
-        "name":"accept",
-        "value":"application/json"
+        "type": "header",
+        "name": "accept",
+        "value": "application/json"
       }
     ],
-    "response":{
-      "id":"e110",
-      "name":"Ankur",
-      "position":"Software Developer"
+    "response": {
+      "id": "e110",
+      "name": "Ankur",
+      "position": "Software Developer"
     }
   }
 ]
