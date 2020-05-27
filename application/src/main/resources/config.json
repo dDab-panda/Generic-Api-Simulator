@@ -27,7 +27,7 @@
             {
                "Request":{
                   "method":"GET",
-                  "url":"/TID764",
+                  "url":"/TID746",
                   "requestheaders":{
                      "Accept":"application/json"
                   }
@@ -47,7 +47,7 @@
             {
                "Request":{
                   "method":"DELETE",
-                  "url":"/TID666",
+                  "url":"/?id=TID666",
                   "requestheaders":{
                      "Accept":"application/json"
                   }

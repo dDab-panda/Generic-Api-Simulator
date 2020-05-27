@@ -16,6 +16,8 @@ import com.simulator.application.config.ConfigurationLoader;
 import com.simulator.exceptions.NoEndpointFoundException;
 import com.simulator.exceptions.NoQueryParamFoundException;
 import com.simulator.exceptions.NoRequestBodyFoundException;
+import com.simulator.exceptions.NoRestJsonFileFoundException;
+
 import com.simulator.handler.IRequestHandler;
 import com.simulator.handler.RequestHandlerFactory;
 import com.simulator.pojo.config.ConfigKey;
@@ -88,6 +90,12 @@ public class EndpointController {
 		getRequestContext().setApplication(configValue.getApplication());
 		getRequestContext().setEndpoint(configValue.getEndpoint());
 		getRequestContext().setRequestHeaders(getHeaderMap(request));
+
+		String acceptType = getRequestContext().getRequestHeaders().get("accept");
+		if(!acceptType.contains("json")){
+			throw new NoRestJsonFileFoundException();
+		}
+
 		getRequestContext().setQueryParams(request.getParameterMap());
 		
 	}
