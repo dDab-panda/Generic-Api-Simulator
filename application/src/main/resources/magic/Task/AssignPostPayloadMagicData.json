@@ -1,0 +1,26 @@
+[
+  {
+    "magicdata": [
+      {
+        "type": "header",
+        "name": "accept",
+        "value": "application/json"
+      },
+      {
+        "type": "request",
+        "name": "nick",
+        "value": "max"
+      }
+    ],
+    "response": {
+      "task" : [
+        {
+          "id" : "TID345",
+          "title" : "RGB",
+          "completeFlag" : "true",
+          "assignedUser" : "max"
+        }
+      ]
+    }
+  }
+]

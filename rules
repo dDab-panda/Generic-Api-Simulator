@@ -1,4 +1,0 @@
-1. GET and DELETE need not have a body.
-2. GET and DELETE must have atleast one query parameter.
-3. POST and PUT must have payload.
-

@@ -1,0 +1,21 @@
+[
+  {
+    "magicdata": [
+      {
+        "type": "header",
+        "name": "accept",
+        "value": "application/json"
+      }
+    ],
+    "response": {
+      "task" : [
+        {
+          "id" : "TID666",
+          "title" : "GPF",
+          "completeFlag" : "true",
+          "assignedUser" : "bob"
+        }
+      ]
+    }
+  }
+]

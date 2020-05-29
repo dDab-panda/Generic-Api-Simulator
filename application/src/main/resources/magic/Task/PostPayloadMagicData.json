@@ -1,0 +1,31 @@
+[
+  {
+    "magicdata": [
+      {
+        "type": "header",
+        "name": "accept",
+        "value": "application/json"
+      },
+      {
+        "type": "request",
+        "name": "title",
+        "value": "PLA"
+      },
+      {
+        "type": "request",
+        "name": "completeFlag",
+        "value": "false"
+      }
+    ],
+    "response": {
+      "task" : [
+        {
+          "id" : "TID984",
+          "title" : "PLA",
+          "completeFlag" : "false",
+          "assignedUser" : "null"
+        }
+      ]
+    }
+  }
+]

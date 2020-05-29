@@ -1,0 +1,45 @@
+[
+  {
+    "magicdata": [
+      {
+        "type": "header",
+        "name": "accept",
+        "value": "application/json"
+      }
+    ],
+    "response": {
+      "task" : [
+        {
+          "id" : "TID746",
+          "title" : "LAX",
+          "completeFlag" : "false",
+          "assignedUser" : "alice"
+        },
+        {
+          "id" : "TID121",
+          "title" : "POA",
+          "completeFlag" : "true",
+          "assignedUser" : "bob"
+        },
+        {
+          "id" : "TID666",
+          "title" : "GPF",
+          "completeFlag" : "true",
+          "assignedUser" : "bob"
+        },
+        {
+          "id" : "TID953",
+          "title" : "BGA",
+          "completeFlag" : "false",
+          "assignedUser" : "brad"
+        },
+        {
+          "id" : "TID345",
+          "title" : "RGB",
+          "completeFlag" : "false",
+          "assignedUser" : "brad"
+        }
+      ]
+    }
+  }
+]
