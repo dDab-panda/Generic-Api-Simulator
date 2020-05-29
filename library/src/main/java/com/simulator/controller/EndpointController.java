@@ -66,8 +66,8 @@ public class EndpointController {
 	private void CreateRequestContext(HttpServletRequest request, byte[] requestBody){
 		//get the application and endpoint from conf
 		logger.trace("Creating request context");
-				if((requestBody == null || requestBody.length == 0)
-				&& (request.getMethod().contentEquals("POST") || request.getMethod().equals("PUT"))) { 
+		if((requestBody == null || requestBody.length == 0)
+		&& (request.getMethod().contentEquals("POST") || request.getMethod().equals("PUT"))) { 
 			
 			throw new NoRequestBodyFoundException(request.getMethod());
 		}
